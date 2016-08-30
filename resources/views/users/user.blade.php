@@ -1,6 +1,14 @@
 @extends('layouts.master')
 @section('content')
 	<div>
+		<div>
+			<h1>User Info</h1>
+			<ul>
+				<li>Name</li>
+				<li>Username</li>
+				<li>user@example.com</li>
+			</ul>
+		</div>
 		<button type="button" class="btn btn-primary" data-toggle="modal" data-target="#edit-modal">Edit profile</button>
 
 		<div class="modal fade" id="edit-modal" tabindex="-1" role="dialog" aria-labelledby="edit profile">
@@ -28,5 +36,22 @@
 				</div>
 			</div>
 		</div>
+		<form>
+			<input type="hidden" name="check-in" value="1">
+			<button type="submit"><span class="glyphicon glyphicon-check">Quest Check-In</span></button>
+		</form>
+	</div>
+	<div>
+		<h2>Liked Events</h2>
+		<ul>
+		{{-- 
+			@foreach ($events as $event)
+				<li>{{ $event }}</li>
+			@endforeach
+		--}}
+		</ul>
+	</div>
+	<div>
+		 <h2>Available Quests</h2>
 	</div>
 @stop
