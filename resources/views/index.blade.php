@@ -1,17 +1,10 @@
 <?php
 $client = DMS\Service\Meetup\MeetupKeyAuthClient::factory(array('key' => '36632b4535b515e32134731e611f5d'));
 
-// Use our __call method (auto-complete provided)
-$response = $client->getTopics(array('topic'));
-
-
-
-
-/*
-$api_key = "36632b4535b515e32134731e611f5d";
-$connection = new MeetupKeyAuthConnection($api_key);
-$m = new MeetupEvents($connection);
-$events = $m->getEvents( array( 'group_urlname' => '<GROUP URL NAME>') );*/
+// Use our __call method (auto-complete provided) 
+//CHANGE GAMES TO BE THE SEARCH TERM BEING QUERIED
+$response = $client->getFindTopics(array('query' => 'games', 'page' => '15'));
+//var_dump($response);
 ?>
 <!DOCTYPE html>
 <html>
@@ -22,6 +15,11 @@ $events = $m->getEvents( array( 'group_urlname' => '<GROUP URL NAME>') );*/
         <link href="https://fonts.googleapis.com/css?family=Lato:100" rel="stylesheet" type="text/css">
 
         <style>
+        .interest_container {
+                text-align: center;
+                margin: 5px;
+        }
+
             html, body {
                 height: 100%;
             }
@@ -52,10 +50,14 @@ $events = $m->getEvents( array( 'group_urlname' => '<GROUP URL NAME>') );*/
         </style>
     </head>
     <body>
-    <div class = "btn btn-default">
-    <?php foreach ($response as $responseItem) {
-    echo "<p>" . $responseItem['name'] . "</p>";
-}  ?>
+    <div class = "interest_container">
+        <?php
+        $i = 0; 
+        while($response->offsetExists($i)) {
+            $responseItem = $response->offsetGet($i);
+            echo "<button class='btn btn-default'>" . $responseItem['name'] . "</button>";
+            $i++;
+        }  ?>
     </div>
         <div class="container">
             <div class="content">
