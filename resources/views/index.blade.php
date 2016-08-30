@@ -2,9 +2,7 @@
 $client = DMS\Service\Meetup\MeetupKeyAuthClient::factory(array('key' => '36632b4535b515e32134731e611f5d'));
 
 // Use our __call method (auto-complete provided)
-$response = $client->getTopics(array('topic'));
-
-
+$response = $client->getFindTopics(['query' => 'Games']);
 
 
 /*
@@ -19,7 +17,6 @@ $events = $m->getEvents( array( 'group_urlname' => '<GROUP URL NAME>') );*/
         <title>Laravel</title>
         <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
 
-        <link href="https://fonts.googleapis.com/css?family=Lato:100" rel="stylesheet" type="text/css">
 
         <style>
             html, body {
@@ -52,11 +49,11 @@ $events = $m->getEvents( array( 'group_urlname' => '<GROUP URL NAME>') );*/
         </style>
     </head>
     <body>
-    <div class = "btn btn-default">
-    <?php foreach ($response as $responseItem) {
-    echo "<p>" . $responseItem['name'] . "</p>";
-}  ?>
-    </div>
+        <?php foreach ($response as $data => $responseItem) {
+            echo "<p>" . $data[$responseItem]['name'] . "</p>";
+            echo "<p>" . $data[$responseItem]['description'] . "</p>";
+            echo "<a>" . $data[$responseItem]['link'] . "</a>";
+        }  ?>
         <div class="container">
             <div class="content">
                 <div class="title">Laravel 5</div>
