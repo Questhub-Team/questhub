@@ -2,9 +2,7 @@
 $client = DMS\Service\Meetup\MeetupKeyAuthClient::factory(array('key' => '36632b4535b515e32134731e611f5d'));
 
 // Use our __call method (auto-complete provided)
-$response = $client->getTopics(array('topic'));
-
-
+$response = $client->getFindTopics(['query' => 'Games']);
 
 
 /*
@@ -15,14 +13,9 @@ $events = $m->getEvents( array( 'group_urlname' => '<GROUP URL NAME>') );*/
 ?>
 @extends('layouts.master')
 @section('content')
-<div class = "btn btn-default">
-	<?php foreach ($response as $responseItem) {
-	echo "<p>" . $responseItem['name'] . "</p>";
-	}  ?>
-</div>
+
 <div class="container">
 	<button type="button" class="btn btn-primary btn-lg" data-toggle="modal" data-target="#login-modal">Login</button>
-
 		<div class="modal fade" id="login-modal" tabindex="-1" role="dialog" aria-labelledby="login form">
 			<div class="modal-dialog modal-lg" role="document">
 				<div class="modal-content container">
@@ -75,4 +68,15 @@ $events = $m->getEvents( array( 'group_urlname' => '<GROUP URL NAME>') );*/
 
 </div>
 
+    <?php foreach ($response as $data => $responseItem) {
+        echo "<p>" . $data[$responseItem]['name'] . "</p>";
+        echo "<p>" . $data[$responseItem]['description'] . "</p>";
+        echo "<a>" . $data[$responseItem]['link'] . "</a>";
+    }  ?>
+    <div class="container">
+        <div class="content">
+            <div class="title">Laravel 5</div>
+        </div>
+    </div>
 @stop
+ 
