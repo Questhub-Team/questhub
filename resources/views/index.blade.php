@@ -1,18 +1,31 @@
 <?php
 $client = DMS\Service\Meetup\MeetupKeyAuthClient::factory(array('key' => '36632b4535b515e32134731e611f5d'));
 
+
+// Use our __call method (auto-complete provided) 
+//CHANGE GAMES TO BE THE SEARCH TERM BEING QUERIED
+$response = $client->getFindTopics(array('query' => 'games', 'page' => '15'));
+//var_dump($response);
+
 // Use our __call method (auto-complete provided)
 $response = $client->getFindTopics(['query' => 'Games']);
 
 
-/*
-$api_key = "36632b4535b515e32134731e611f5d";
-$connection = new MeetupKeyAuthConnection($api_key);
-$m = new MeetupEvents($connection);
-$events = $m->getEvents( array( 'group_urlname' => '<GROUP URL NAME>') );*/
+
 ?>
 @extends('layouts.master')
 @section('content')
+
+
+        <style>
+        .interest_container {
+                text-align: center;
+                margin: 5px;
+        }
+
+            html, body {
+                height: 100%;
+            }
 
 <div class="container">
 	<button type="button" class="btn btn-primary btn-lg" data-toggle="modal" data-target="#login-modal">Login</button>
@@ -36,6 +49,7 @@ $events = $m->getEvents( array( 'group_urlname' => '<GROUP URL NAME>') );*/
 			</div>
 		</div>
 		<button type="button" class="btn btn-primary btn-lg" data-toggle="modal" data-target="#register-modal">Register</button>
+
 
 		<div class="modal fade" id="register-modal" tabindex="-1" role="dialog" aria-labelledby="registration form">
 			<div class="modal-dialog modal-lg" role="document">
@@ -68,11 +82,15 @@ $events = $m->getEvents( array( 'group_urlname' => '<GROUP URL NAME>') );*/
 
 </div>
 
-    <?php foreach ($response as $data => $responseItem) {
-        echo "<p>" . $data[$responseItem]['name'] . "</p>";
-        echo "<p>" . $data[$responseItem]['description'] . "</p>";
-        echo "<a>" . $data[$responseItem]['link'] . "</a>";
-    }  ?>
+
+    <div class = "interest_container">
+        <?php
+        $i = 0; 
+        while($response->offsetExists($i)) {
+            $responseItem = $response->offsetGet($i);
+            echo "<button class='btn btn-default'>" . $responseItem['name'] . "</button>";
+            $i++;
+        }  ?>
     <div class="container">
         <div class="content">
             <div class="title">Laravel 5</div>
