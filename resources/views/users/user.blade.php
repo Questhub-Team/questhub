@@ -17,11 +17,11 @@
 					<form>
 						<div class="form-group">
 							<label for="name">Name</label>
-							<input type="text" class="form-control" id="name" placeholder="name">
+							<input type="text" class="form-control" id="name" placeholder="Name">
 						</div>
 						<div class="form-group">
 							<label for="username">Username</label>
-							<input type="text" class="form-control" id="username" placeholder="username">
+							<input type="text" class="form-control" id="username" placeholder="Username">
 						</div>
 						<div class="form-group">
 							<label for="email">Email</label>
@@ -29,7 +29,7 @@
 						</div>
 						<div class="form-group">
 							<label for="password">Password</label>
-							<input type="password" class="form-control" id="password" placeholder="password">
+							<input type="password" class="form-control" id="password" placeholder="Password">
 						</div>
 						<button type="submit" class="btn btn-default">Submit</button>
 					</form>
