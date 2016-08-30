@@ -11,53 +11,72 @@ $connection = new MeetupKeyAuthConnection($api_key);
 $m = new MeetupEvents($connection);
 $events = $m->getEvents( array( 'group_urlname' => '<GROUP URL NAME>') );*/
 ?>
-<!DOCTYPE html>
-<html>
-    <head>
-        <title>Laravel</title>
-        <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+@extends('layouts.master')
+@section('content')
 
+<div class="container">
+	<button type="button" class="btn btn-primary btn-lg" data-toggle="modal" data-target="#login-modal">Login</button>
+		<div class="modal fade" id="login-modal" tabindex="-1" role="dialog" aria-labelledby="login form">
+			<div class="modal-dialog modal-lg" role="document">
+				<div class="modal-content container">
+					<h2>Login to Questhub</h2>
+					<form method="POST" action="{{-- action('?') --}}">
+						{{ csrf_field() }}
+						<div class="form-group">
+							<label for="email">Username or Email</label>
+							<input type="text" class="form-control" id="login-email" placeholder="Username or Email">
+						</div>
+						<div class="form-group">
+							<label for="password">Password</label>
+							<input type="password" class="form-control" id="login-password" placeholder="Password">
+						</div>
+						<button type="submit" class="btn btn-primary"><span class="glyphicon glyphicon-log-in"></span> Login</button>
+					</form>
+				</div>
+			</div>
+		</div>
+		<button type="button" class="btn btn-primary btn-lg" data-toggle="modal" data-target="#register-modal">Register</button>
 
-        <style>
-            html, body {
-                height: 100%;
-            }
+		<div class="modal fade" id="register-modal" tabindex="-1" role="dialog" aria-labelledby="registration form">
+			<div class="modal-dialog modal-lg" role="document">
+				<div class="modal-content container">
+					<h2>Register for Questhub</h2>
+					<form method="POST" action="{{-- action('?') --}}">
+						{{ csrf_field() }}
+						<div class="form-group">
+							<label for="reg-name">Name</label>
+							<input type="text" class="form-control" id="reg-name" placeholder="Name">
+						</div>
+						<div class="form-group">
+							<label for="reg-username">Username</label>
+							<input type="text" class="form-control" id="reg-username" placeholder="Username">
+						</div>
+						<div class="form-group">
+							<label for="reg-email">Email</label>
+							<input type="text" class="form-control" id="reg-email" placeholder="Email">
+						</div>
 
-            body {
-                margin: 0;
-                padding: 0;
-                width: 100%;
-                display: table;
-                font-weight: 100;
-                font-family: 'Lato';
-            }
+						<div class="form-group">
+							<label for="password">Password</label>
+							<input type="password" class="form-control" id="reg-password" placeholder="Password">
+						</div>
+						<button type="submit" class="btn btn-primary"><span class="glyphicon glyphicon-log-in"></span> Register</button>
+					</form>
+				</div>
+			</div>
+		</div>
 
-            .container {
-                text-align: center;
-                display: table-cell;
-                vertical-align: middle;
-            }
+</div>
 
-            .content {
-                text-align: center;
-                display: inline-block;
-            }
-
-            .title {
-                font-size: 96px;
-            }
-        </style>
-    </head>
-    <body>
-        <?php foreach ($response as $data => $responseItem) {
-            echo "<p>" . $data[$responseItem]['name'] . "</p>";
-            echo "<p>" . $data[$responseItem]['description'] . "</p>";
-            echo "<a>" . $data[$responseItem]['link'] . "</a>";
-        }  ?>
-        <div class="container">
-            <div class="content">
-                <div class="title">Laravel 5</div>
-            </div>
+    <?php foreach ($response as $data => $responseItem) {
+        echo "<p>" . $data[$responseItem]['name'] . "</p>";
+        echo "<p>" . $data[$responseItem]['description'] . "</p>";
+        echo "<a>" . $data[$responseItem]['link'] . "</a>";
+    }  ?>
+    <div class="container">
+        <div class="content">
+            <div class="title">Laravel 5</div>
         </div>
-    </body>
-</html>
+    </div>
+@stop
+ 
