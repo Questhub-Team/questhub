@@ -11,6 +11,12 @@ $response = $client->getFindTopics(array('query' => 'games'));
 
 // Use our __call method (auto-complete provided)
 ?>
+<style>
+	.interest_container {
+		height: 200px;
+		widows: 200px;
+	}
+</style>
 <form class="navbar-form navbar-right" method="GET" >
 	<div class="form-group">
 		<input type="text" class="form-control" placeholder="Search Interests" name="search" value="{{ isset($searchTerm) ? $searchTerm : '' }}">
@@ -46,17 +52,11 @@ $response = $client->getFindTopics(array('query' => 'games'));
 </div>
 
 </div>
-<div class = "interest_container">
-	<?php
-	$i = 0; 
-	while($response->offsetExists($i)) {
-		$responseItem = $response->offsetGet($i);
-		echo "<button class='btn btn-default'>" . $responseItem['name'] . "</button>";
-		$i++;
-	}  ?>
+
+
 	<div class="container">
 		<div class="content">
-			<div class="title">Laravel 5</div>
+			<div class="title">QUESTHUB</div>
 		</div>
 	</div>
 	@stop

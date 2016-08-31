@@ -16,7 +16,7 @@ class AppController extends Controller
      */
     public function index()
     {
-        $client = MeetupKeyAuthClient::factory(array('key' => env('MEETUP_KEY')));
+        $client = MeetupKeyAuthClient::factory(array('key' => env('MEETUP_KEY', null)));
         $response = $client->getFindTopics(array('query' => 'games', 'page' => '15'));
         $data = compact('response');
         return view('index')->with($data);
@@ -73,27 +73,29 @@ class AppController extends Controller
     {
         $client = MeetupKeyAuthClient::factory(array('key' => env('MEETUP_KEY')));
         $query = [
-            'topic' => 'newtech',
-            'zip' => '78247',
-            'country' => 'us',
-            'state' => 'tx',
-            'city' => 'san antonio'
+        'topic' => 'newtech',
+        'zip' => '78247',
+        'country' => 'us',
+        'state' => 'tx',
+        'city' => 'san antonio'
         ];
         $query1 = [
-            'topic' => 'social',
-            'zip' => '78247',
-            'country' => 'us',
-            'state' => 'tx',
-            'city' => 'san antonio'
+        'topic' => 'social',
+        'zip' => '78247',
+        'country' => 'us',
+        'state' => 'tx',
+        'city' => 'san antonio'
         ];
+        
         $response = $client->getGroups(
             $query
-         );
+            );
         $response1 = $client->getGroups(
             $query1
-         );
+            );
         $response = array_merge($response->getData(), $response1->getData());
         //dd($response[0], $response[count($response) - 1]);
+
         $data = compact('response');
         return view('events.events')->with($data); 
     }

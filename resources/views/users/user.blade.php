@@ -3,11 +3,15 @@
 	<div>
 		<div>
 			<h1>User Info</h1>
-			<ul>
-				<li>Name</li>
-				<li>Username</li>
-				<li>user@example.com</li>
-			</ul>
+			
+			<tr>
+				<td>Username: {{Auth::user()->username}}</td>
+				<br>
+				<td>Name: {{Auth::user()->name}}</td>
+				<br>
+				<td>Email: {{Auth::user()->email}}</td>
+			</tr>
+			
 		</div>
 		<button type="button" class="btn btn-primary" data-toggle="modal" data-target="#edit-modal">Edit profile</button>
 
@@ -15,7 +19,7 @@
 			<div class="modal-dialog modal-lg" role="document">
 				<div class="modal-content">
 					<form>
-						<div class="form-group">
+						<div class="form-group" action="/users/user">
 							<label for="name">Name</label>
 							<input type="text" class="form-control" id="name" placeholder="Name">
 						</div>
@@ -43,15 +47,13 @@
 	</div>
 	<div>
 		<h2>Liked Events</h2>
-		<ul>
-		{{-- 
-			@foreach ($events as $event)
-				<li>{{ $event }}</li>
-			@endforeach
-		--}}
-		</ul>
 	</div>
 	<div>
 		 <h2>Available Quests</h2>
 	</div>
+	<div class = "col-sm-4">
+    @foreach ($response as $responseItem)
+        <button class='btn btn-default'>{{ $responseItem['name'] }}</button>
+    @endforeach
+</div>
 @stop
