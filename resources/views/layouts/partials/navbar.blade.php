@@ -9,6 +9,7 @@
 			<span class="icon-bar"></span>
 			</button>
 			<a class="navbar-brand" href="/">Questhub</a>
+			<!-- {{ Auth::user()->name }} -->
 		</div>
 
 	<!-- Collect the nav links, forms, and other content for toggling -->
