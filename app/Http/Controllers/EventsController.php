@@ -38,7 +38,23 @@ class EventsController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $client = MeetupKeyAuthClient::factory(array('key' => env('MEETUP_KEY')));
+        $query = [
+            'topic' => 'Social',
+            'country' => 'us',
+            'state' => 'tx',
+            'city' => 'san antonio'
+        ];
+        $response = $client->getGroups($query);
+        foreach ($response as $event) {
+            $event = DB::table('events')->insert([
+                ['description' => $description],
+                ['title' => $title],
+                ['location' => $location],
+                ['price' => $price],
+                ['date' => $date]
+            ]);
+        }
     }
 
     /**

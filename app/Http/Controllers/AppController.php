@@ -40,7 +40,23 @@ class AppController extends Controller
      */
     public function store(Request $request)
     {
-        //
+      // $client = MeetupKeyAuthClient::factory(array('key' => env('MEETUP_KEY')));
+      //   $query = [
+      //       'topic' => 'Social',
+      //       'country' => 'us',
+      //       'state' => 'tx',
+      //       'city' => 'san antonio'
+      //   ];
+      //   $response = $client->getGroups($query);
+      //   foreach ($response as $event) {
+      //       DB::table('events')->insert([
+      //           ['description' => $description],
+      //           ['title' => $title],
+      //           ['location' => $location],
+      //           ['price' => $price],
+      //           ['date' => $date]
+      //       ]);
+      //   }  
     }
 
     /**
@@ -58,17 +74,26 @@ class AppController extends Controller
         $client = MeetupKeyAuthClient::factory(array('key' => env('MEETUP_KEY')));
         $query = [
             'topic' => 'newtech',
+            'zip' => '78247',
             'country' => 'us',
             'state' => 'tx',
             'city' => 'san antonio'
         ];
-        //dd('https://api.meetup.com/groups.json/?' . http_build_query($query));
-        $response = $client->getGroups(//[
-            //'urlname' => 'https://api.meetup.com/groups.json/?' . 'topic=newtech&country=us&state=tx&city=san%20antonio'
-         //]
+        $query1 = [
+            'topic' => 'social',
+            'zip' => '78247',
+            'country' => 'us',
+            'state' => 'tx',
+            'city' => 'san antonio'
+        ];
+        $response = $client->getGroups(
             $query
          );
-        //dd($response);
+        $response1 = $client->getGroups(
+            $query1
+         );
+        $response = array_merge($response->getData(), $response1->getData());
+        //dd($response[0], $response[count($response) - 1]);
         $data = compact('response');
         return view('events.events')->with($data); 
     }
