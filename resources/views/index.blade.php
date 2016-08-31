@@ -16,17 +16,6 @@ $response = $client->getFindTopics(['query' => 'Games']);
 @extends('layouts.master')
 @section('content')
 
-
-        <style>
-        .interest_container {
-                text-align: center;
-                margin: 5px;
-        }
-
-            html, body {
-                height: 100%;
-            }
-
 <div class="container">
 	<button type="button" class="btn btn-primary btn-lg" data-toggle="modal" data-target="#login-modal">Login</button>
 		<div class="modal fade" id="login-modal" tabindex="-1" role="dialog" aria-labelledby="login form">
@@ -82,19 +71,18 @@ $response = $client->getFindTopics(['query' => 'Games']);
 
 </div>
 
-
-    <div class = "interest_container">
-        <?php
-        $i = 0; 
-        while($response->offsetExists($i)) {
-            $responseItem = $response->offsetGet($i);
-            echo "<button class='btn btn-default'>" . $responseItem['name'] . "</button>";
-            $i++;
-        }  ?>
-    <div class="container">
-        <div class="content">
-            <div class="title">Laravel 5</div>
-        </div>
+<div class = "interest_container">
+    <?php
+    $i = 0; 
+    while($response->offsetExists($i)) {
+        $responseItem = $response->offsetGet($i);
+        echo "<button class='btn btn-default'>" . $responseItem['name'] . "</button>";
+        $i++;
+    }  ?>
+<div class="container">
+    <div class="content">
+        <div class="title">Laravel 5</div>
     </div>
+</div>
 @stop
  
