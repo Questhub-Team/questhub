@@ -31,6 +31,6 @@ class CreateEventInterestsTable extends Migration
      */
     public function down()
     {
-        Shema::drop('event_interests');
+        Schema::drop('event_interests');
     }
 }

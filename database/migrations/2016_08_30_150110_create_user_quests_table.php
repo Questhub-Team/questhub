@@ -31,7 +31,7 @@ class CreateUserQuestsTable extends Migration
      */
     public function down()
     {
-        Shema::drop('user_quests');
+        Schema::drop('user_quests');
     }
 }
 

@@ -6,7 +6,7 @@
 $client = DMS\Service\Meetup\MeetupKeyAuthClient::factory(array('key' => '36632b4535b515e32134731e611f5d'));
 // Use our __call method (auto-complete provided) 
 //CHANGE GAMES TO BE THE SEARCH TERM BEING QUERIED
-$response = $client->getFindTopics(array('query' => 'games', 'page' => '15'));
+$response = $client->getFindTopics(array('query' => 'games'));
 //var_dump($response);
 
 // Use our __call method (auto-complete provided)
