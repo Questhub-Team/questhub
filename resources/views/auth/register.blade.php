@@ -71,5 +71,7 @@
 </div>
 </div>
 </div>
-
-@endsection
+<div class = "col-sm-4">
+    
+</div>
+@stop

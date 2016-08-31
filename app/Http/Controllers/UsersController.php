@@ -2,7 +2,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-
+use DMS\Service\Meetup\MeetupKeyAuthClient;
 use App\Http\Requests;
 use App\Http\Controllers\Controller;
 use App\User;
@@ -42,7 +42,20 @@ class UsersController extends Controller
      */
     public function show($id)
     {
-        //  
+        $user = User::findOrFail($id);
+        $client = MeetupKeyAuthClient::factory(array('key' => env('MEETUP_KEY')));
+        $query = [
+            'topic' => 'newtech',
+            'country' => 'us',
+            'state' => 'tx',
+            'city' => 'san antonio'
+        ];
+        
+        $response = $client->getGroups(
+            $query
+         );
+        $data = compact('user', 'response');
+        return view('users.user')->with($data);
     }
     /**
      * Show the form for editing the specified resource.

@@ -13,6 +13,9 @@
 
 
 Route::resource('/', 'AppController');
+Route::resource('auth/register', 'AppController');
+Route::resource('users', 'UsersController');
+Route::resource('apps', 'AppController');
 
 
 // Registration routes...
@@ -28,4 +31,6 @@ Route::controllers([
 Route::get('/all-events', 'AppController@showAll');
 
 Route::get('auth/logout', 'Auth\AuthController@getLogout');
+
+Route::get('profile', array('as' => 'auth', 'uses' => 'ProfileController@getProfile'));
 

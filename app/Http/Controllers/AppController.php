@@ -16,7 +16,7 @@ class AppController extends Controller
      */
     public function index()
     {
-        $client = MeetupKeyAuthClient::factory(array('key' => env('MEETUP_KEY')));
+        $client = MeetupKeyAuthClient::factory(array('key' => env('MEETUP_KEY', null)));
         $response = $client->getFindTopics(array('query' => 'games', 'page' => '15'));
         $data = compact('response');
         return view('index')->with($data);
@@ -62,13 +62,12 @@ class AppController extends Controller
             'state' => 'tx',
             'city' => 'san antonio'
         ];
-        //dd('https://api.meetup.com/groups.json/?' . http_build_query($query));
+        
         $response = $client->getGroups(//[
-            //'urlname' => 'https://api.meetup.com/groups.json/?' . 'topic=newtech&country=us&state=tx&city=san%20antonio'
-         //]
+            
             $query
          );
-        //dd($response);
+        
         $data = compact('response');
         return view('events.events')->with($data); 
     }
