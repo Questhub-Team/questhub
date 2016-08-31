@@ -43,6 +43,7 @@
 				</form>
 				<ul class="nav navbar-nav navbar-right">
 					<li><a href="">Profile<span class="sr-only">(current)</span></a></li>
+					<li><a href="{{ action('Auth\AuthController@getLogout') }}">Logout</a></li>
 					<li><a href="{{ action('AppController@showAll')}}">Events</a></li>
 				</ul>
 			</div><!-- /.navbar-collapse -->

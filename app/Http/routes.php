@@ -27,3 +27,5 @@ Route::controllers([
 
 Route::get('/all-events', 'AppController@showAll');
 
+Route::get('auth/logout', 'Auth\AuthController@getLogout');
+
