@@ -55,19 +55,18 @@
 
 </div>
 
-
-    <div class = "interest_container">
-        <?php
-        $i = 0; 
-        while($response->offsetExists($i)) {
-            $responseItem = $response->offsetGet($i);
-            echo "<button class='btn btn-default'>" . $responseItem['name'] . "</button>";
-            $i++;
-        }  ?>
-    <div class="container">
-        <div class="content">
-            <div class="title">Laravel 5</div>
-        </div>
+<div class = "interest_container">
+    <?php
+    $i = 0; 
+    while($response->offsetExists($i)) {
+        $responseItem = $response->offsetGet($i);
+        echo "<button class='btn btn-default'>" . $responseItem['name'] . "</button>";
+        $i++;
+    }  ?>
+<div class="container">
+    <div class="content">
+        <div class="title">Laravel 5</div>
     </div>
+</div>
 @stop
  
