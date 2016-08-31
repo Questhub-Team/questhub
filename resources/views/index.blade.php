@@ -1,4 +1,5 @@
 
+
 @extends('layouts.master')
 @section('content')
 <?php
@@ -17,6 +18,7 @@ $response = $client->getFindTopics(['query' => 'Games']);
 	</div>
 	<button type="submit" class="btn btn-default"><i class="fa fa-search"></i>Search</button>
 </form>
+
 <div class="container">
 	<button type="button" class="btn btn-primary btn-lg" data-toggle="modal" data-target="#login-modal">Login</button>
 	<div class="modal fade" id="login-modal" tabindex="-1" role="dialog" aria-labelledby="login form">
@@ -71,8 +73,6 @@ $response = $client->getFindTopics(['query' => 'Games']);
 	</div>
 
 </div>
-
-
 <div class = "interest_container">
 	<?php
 	$i = 0; 
@@ -87,4 +87,3 @@ $response = $client->getFindTopics(['query' => 'Games']);
 		</div>
 	</div>
 	@stop
-
