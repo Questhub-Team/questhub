@@ -29,20 +29,21 @@
 					<span class="icon-bar"></span>
 					<span class="icon-bar"></span>
 					</button>
-					<a class="navbar-brand" href="/posts">Questhub</a>
+					<a class="navbar-brand" href="/">Questhub</a>
 				</div>
 
 			<!-- Collect the nav links, forms, and other content for toggling -->
 			<div class="collapse navbar-collapse" id="navbar-collapse">
 				<form method="GET" class="navbar-form navbar-right">
+					{{ csrf_field() }}
 					<div class="form-group">
 						<input name="keyword" type="text" class="form-control" placeholder="Search">
 					</div>
 					<button type="submit" class="btn btn-default">Search</button>
 				</form>
 				<ul class="nav navbar-nav navbar-right">
-					<li><a href="">Login <span class="sr-only">(current)</span></a></li>
-					<li><a href="">Register</a></li>
+					<li><a href="">Profile<span class="sr-only">(current)</span></a></li>
+					<li><a href="{{ action('AppController@showAll')}}">Events</a></li>
 				</ul>
 			</div><!-- /.navbar-collapse -->
 			</div><!-- /.container-fluid -->
