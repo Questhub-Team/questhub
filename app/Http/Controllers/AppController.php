@@ -53,7 +53,25 @@ class AppController extends Controller
     {
         //
     }
-
+    public function showAll()
+    {
+        $client = MeetupKeyAuthClient::factory(array('key' => env('MEETUP_KEY')));
+        $query = [
+            'topic' => 'newtech',
+            'country' => 'us',
+            'state' => 'tx',
+            'city' => 'san antonio'
+        ];
+        //dd('https://api.meetup.com/groups.json/?' . http_build_query($query));
+        $response = $client->getGroups(//[
+            //'urlname' => 'https://api.meetup.com/groups.json/?' . 'topic=newtech&country=us&state=tx&city=san%20antonio'
+         //]
+            $query
+         );
+        //dd($response);
+        $data = compact('response');
+        return view('events.events')->with($data); 
+    }
     /**
      * Show the form for editing the specified resource.
      *

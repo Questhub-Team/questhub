@@ -2,21 +2,22 @@
 @section('content')
 	<div>
 		<h1>Events</h1>
-		{{--
-		@foreach ($events as $event)
-				<h2><a href="">{{ $event->name }}</a></h2>
-				<p>{{ $event->location }}</p>
-				<p>{{ $event->time }}</p>
-				<form>
-					<input type="hidden" name="like" value="1">
-					<button type="submit" class="btn btn-default">Like</button>
-				</form>
-				<form>
-					<input type="hidden" name="ignore" value="1">
-					<button type="submit" class="btn btn-default">Ignore</button>
-				</form>
-		@endforeach
-		--}}
-
+		<?php $i = 0 ?>
+			@foreach ($response as $responseItem) 
+				
+					<h4><a href="">{{ $responseItem['name'] }}</a></h4>
+						{{ strip_tags($responseItem['description']) }}
+					<form>
+						{{ csrf_field() }}
+						<input type='hidden' name='like' value='1'>
+						<button type='submit' class='btn btn-default'>Like</button>
+					</form>
+					<form>
+						{{ csrf_field() }}
+						<input type='hidden' name='ignore' value='0'>
+						<button type='submit' class='btn btn-default'>Ignore</button>
+					</form>
+				<?php $i++ ?>
+			@endforeach
 	</div>
 @stop
