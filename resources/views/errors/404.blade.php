@@ -10,14 +10,19 @@
 		h1 {
 			font-size: 4em;
 		}
+		#small {
+			font-size: .5em;
+		}
 	</style>
 	<title>404 - Page not found</title>
 </head>
 <body>
 	<div>
 		<img src="img/herebedragons.jpg" alt="Here be dragons.">
-		<h1>404</h1>
-		<h2>Sorry, page cannot be found.</h2>
+		<h1>
+			404<br>
+			<span id="small">Sorry, page cannot be found.</span>
+		</h1>
 	</div>
 </body>
 </html>
