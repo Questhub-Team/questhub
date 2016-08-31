@@ -21,7 +21,7 @@
 			<button type="submit" class="btn btn-default">Search</button>
 		</form>
 		<ul class="nav navbar-nav navbar-right">
-			<li><a href="">Profile<span class="sr-only">(current)</span></a></li>
+			<li><a href="{{ action('UsersController@show', Auth::id()) }}">Profile<span class="sr-only">(current)</span></a></li>
 			<li><a href="{{ action('Auth\AuthController@getLogout') }}">Logout</a></li>
 			<li><a href="{{ action('AppController@showAll')}}">Events</a></li>
 		</ul>
