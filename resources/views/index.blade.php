@@ -1,32 +1,5 @@
-<?php
-$client = DMS\Service\Meetup\MeetupKeyAuthClient::factory(array('key' => '36632b4535b515e32134731e611f5d'));
-
-
-// Use our __call method (auto-complete provided) 
-//CHANGE GAMES TO BE THE SEARCH TERM BEING QUERIED
-$response = $client->getFindTopics(array('query' => 'games', 'page' => '15'));
-//var_dump($response);
-
-// Use our __call method (auto-complete provided)
-$response = $client->getFindTopics(['query' => 'Games']);
-
-
-
-?>
 @extends('layouts.master')
 @section('content')
-
-
-        <style>
-        .interest_container {
-                text-align: center;
-                margin: 5px;
-        }
-
-            html, body {
-                height: 100%;
-            }
-
 <div class="container">
 	<button type="button" class="btn btn-primary btn-lg" data-toggle="modal" data-target="#login-modal">Login</button>
 		<div class="modal fade" id="login-modal" tabindex="-1" role="dialog" aria-labelledby="login form">
