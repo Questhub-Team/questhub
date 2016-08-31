@@ -13,3 +13,4 @@
 
 
 Route::resource('/', 'AppController');
+Route::get('/all-events', 'AppController@showAll');
