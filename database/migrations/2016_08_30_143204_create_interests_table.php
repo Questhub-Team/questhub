@@ -26,6 +26,6 @@ class CreateInterestsTable extends Migration
      */
     public function down()
     {
-        Shema::drop('interests');
+        Schema::drop('interests');
     }
 }
