@@ -9,7 +9,6 @@
 			<span class="icon-bar"></span>
 			</button>
 			<a class="navbar-brand" href="/">Questhub</a>
-			<!-- {{ Auth::user()->name }} -->
 		</div>
 
 	<!-- Collect the nav links, forms, and other content for toggling -->
@@ -22,9 +21,12 @@
 			<button type="submit" class="btn btn-default">Search</button>
 		</form>
 		<ul class="nav navbar-nav navbar-right">
+			@if(Auth::check())
 			<li><a href="{{ action('UsersController@show', Auth::id()) }}">Profile<span class="sr-only">(current)</span></a></li>
 			<li><a href="{{ action('Auth\AuthController@getLogout') }}">Logout</a></li>
+			@else
 			<li><a href="{{ action('AppController@showAll')}}">Events</a></li>
+			@endif
 		</ul>
 	</div><!-- /.navbar-collapse -->
 	</div><!-- /.container-fluid -->

@@ -48,15 +48,4 @@ $response = $client->getFindTopics(array('query' => 'games'));
 	<a href="{{ action('Auth\AuthController@postRegister')}}" class="btn btn-primary btn-lg">Register</a>
 	<h2></h2>
 </div>
-</div>
-</div>
-
-</div>
-
-
-	<div class="container">
-		<div class="content">
-			<div class="title">QUESTHUB</div>
-		</div>
-	</div>
-	@stop
+@stop

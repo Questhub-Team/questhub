@@ -101,4 +101,23 @@ class EventsController extends Controller
     {
         //
     }
+    public function likeOrIgnore()
+    {
+        Model::unguard();
+        $like = Events::firstOrCreate([
+            'user_id' => $request->user()->id,
+        ]);
+        $like->event = $request->input('vote');
+        $vote->save();
+        Model::reguard();
+
+        $post = $vote->post;
+        $post->vote_score = $post->voteScore(); 
+        $post->save();
+        $data = [
+            'vote_score' => $post->vote_score,
+            'vote' => $vote->vote
+        ];
+        return $data;
+    }
 }
