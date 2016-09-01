@@ -2,21 +2,6 @@
 
 @extends('layouts.master')
 @section('content')
-<?php
-$client = DMS\Service\Meetup\MeetupKeyAuthClient::factory(array('key' => '36632b4535b515e32134731e611f5d'));
-// Use our __call method (auto-complete provided) 
-//CHANGE GAMES TO BE THE SEARCH TERM BEING QUERIED
-$response = $client->getFindTopics(array('query' => 'games'));
-//var_dump($response);
-
-// Use our __call method (auto-complete provided)
-?>
-<style>
-	.interest_container {
-		height: 200px;
-		widows: 200px;
-	}
-</style>
 <form class="navbar-form navbar-right" method="GET" >
 	<div class="form-group">
 		<input type="text" class="form-control" placeholder="Search Interests" name="search" value="{{ isset($searchTerm) ? $searchTerm : '' }}">
@@ -30,7 +15,7 @@ $response = $client->getFindTopics(array('query' => 'games'));
 		<div class="modal-dialog modal-lg" role="document">
 			<div class="modal-content container">
 				<h2>Login to Questhub</h2>
-				<form method="POST" action="{{-- action('?') --}}">
+				<form method="POST" action="{{ action('Auth\AuthController@getLogin')}}">
 					{{ csrf_field() }}
 					<div class="form-group">
 						<label for="email">Username or Email</label>
