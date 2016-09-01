@@ -18,25 +18,28 @@
 		<div class="modal fade" id="edit-modal" tabindex="-1" role="dialog" aria-labelledby="edit profile">
 			<div class="modal-dialog modal-lg" role="document">
 				<div class="modal-content">
-					<form>
-						<div class="form-group" action="/users/user">
-							<label for="name">Name</label>
-							<input type="text" class="form-control" id="name" placeholder="Name">
-						</div>
-						<div class="form-group">
-							<label for="username">Username</label>
-							<input type="text" class="form-control" id="username" placeholder="Username">
-						</div>
-						<div class="form-group">
-							<label for="email">Email</label>
-							<input type="email" class="form-control" id="email" placeholder="Email">
-						</div>
-						<div class="form-group">
-							<label for="password">Password</label>
-							<input type="password" class="form-control" id="password" placeholder="Password">
-						</div>
-						<button type="submit" class="btn btn-default">Submit</button>
-					</form>
+					<div class="container-fluid">
+						<h2>Edit Profile for {{ $user->name }}</h2>
+						<form method="POST" action="{{ action('UsersController@update') }}" id="edit-profile-form">
+							<div class="form-group" action="/users/user">
+								<label for="name">Name</label>
+								<input type="text" class="form-control" id="name" name="name" value="{{ $user->name }}" placeholder="Name">
+							</div>
+							<div class="form-group">
+								<label for="username">Username</label>
+								<input type="text" class="form-control" id="username" name="username" value="{{ $user->username }}" placeholder="Username">
+							</div>
+							<div class="form-group">
+								<label for="email">Email</label>
+								<input type="email" class="form-control" id="email" name="email" value="{{ $user->email }}" placeholder="Email">
+							</div>
+							<div class="form-group">
+								<label for="password">Password</label>
+								<input type="password" class="form-control" id="password" name="password" placeholder="Password">
+							</div>
+							<button type="submit" class="btn btn-default">Submit</button>
+						</form>
+					</div>
 				</div>
 			</div>
 		</div>
