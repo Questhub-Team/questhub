@@ -9,6 +9,8 @@ use Illuminate\Database\Eloquent\Model;
 use App\Http\Requests;
 use App\Http\Controllers\Controller;
 use App\User;
+use App\UserInterests;
+use Hash;
 
 class UsersController extends Controller
     {
@@ -29,12 +31,21 @@ class UsersController extends Controller
      */
     public function store(Request $request)
     {
+
         $user = new User();
-        $user->username = Input::get('username');
-        $user->name = Input::get('name');
-        $user->email = Input::get('email');
-        $user->password = Input::get('password');
+        $user->username = $request->input('username');
+        $user->name = $request->input('name');
+        $user->email = $request->input('email');
+        $user->password = Hash::make($request->input('password'));
         $user->save();
+
+        foreach ($request->input('value') as $interest_id)
+        {
+            $user_interests = new UserInterests();
+            $user_interests->interest_id = $interest_id;
+            $user_interests->user_id = $user->id;
+            $user_interests->save();
+        }
 
         return redirect()->action('AppController@index');
 

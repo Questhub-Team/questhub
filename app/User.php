@@ -25,7 +25,7 @@ class User extends Model implements AuthenticatableContract,
 
     public function interests()
     {
-        return $this->hasMany(Interests::class);
+        return $this->hasMany(UserInterests::class);
     }
     public function friends() 
     {

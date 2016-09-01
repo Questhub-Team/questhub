@@ -2,13 +2,6 @@
 
 @extends('layouts.master')
 @section('content')
-<form class="navbar-form navbar-right" method="GET" >
-	<div class="form-group">
-		<input type="text" class="form-control" placeholder="Search Interests" name="search" value="{{ isset($searchTerm) ? $searchTerm : '' }}">
-	</div>
-	<button type="submit" class="btn btn-default"><i class="fa fa-search"></i>Search</button>
-</form>
-
 <div class="container">
 	<button type="button" class="btn btn-primary btn-lg" data-toggle="modal" data-target="#login-modal">Login</button>
 	<div class="modal fade" id="login-modal" tabindex="-1" role="dialog" aria-labelledby="login form">
@@ -40,6 +33,6 @@
 			</div>
 		</div>
 	</div>
-	<a href="{{ action('Auth\AuthController@postRegister')}}" class="btn btn-primary btn-lg">Register</a>
+	<a href="{{ action('Auth\AuthController@getRegister')}}" class="btn btn-primary btn-lg">Register</a>
 </div>
 @stop

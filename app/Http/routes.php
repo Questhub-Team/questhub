@@ -17,10 +17,10 @@ Route::resource('users', 'UsersController');
 Route::resource('apps', 'AppController');
 
 // Registration routes...
-Route::resource('auth/register', 'UserController@store');
-Route::resource('auth/register', 'AppController');
+//Route::resource('auth/register', 'UserController@store');
+//Route::resource('auth/register', 'AppController');
 Route::get('auth/register', 'Auth\AuthController@getRegister');
-Route::post('auth/register', 'Auth\AuthController@postRegister');
+Route::post('auth/register', 'UsersController@store');
 Route::controllers(['password' => 'Auth\PasswordController',]);
 Route::get('/all-events', 'AppController@showAll');
 
