@@ -86,14 +86,23 @@ class AppController extends Controller
         'state' => 'tx',
         'city' => 'san antonio'
         ];
-        
+        $query2 = [
+        'topic' => 'games',
+        'zip' => '78247',
+        'country' => 'us',
+        'state' => 'tx',
+        'city' => 'san antonio'
+        ];
         $response = $client->getGroups(
             $query
             );
         $response1 = $client->getGroups(
             $query1
             );
-        $response = array_merge($response->getData(), $response1->getData());
+        $response2 = $client->getGroups(
+            $query2
+            );
+        $response = array_merge($response->getData(), $response1->getData(), $response2->getData());
         //dd($response[0], $response[count($response) - 1]);
 
         $data = compact('response');
