@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use DMS\Service\Meetup\MeetupKeyAuthClient;
 use App\Http\Requests;
 use App\Http\Controllers\Controller;
+use Illuminate\Session\Middleware;
 
 class AppController extends Controller
 {
