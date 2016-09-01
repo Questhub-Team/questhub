@@ -18,10 +18,11 @@
 		<div class="modal fade" id="edit-modal" tabindex="-1" role="dialog" aria-labelledby="edit profile">
 			<div class="modal-dialog modal-lg" role="document">
 				<div class="modal-content">
+					<h2>Edit Profile for {{ $user->name }}</h2>
 					<form>
 						<div class="form-group" action="/users/user">
 							<label for="name">Name</label>
-							<input type="text" class="form-control" id="name" name="name" value="{{ $user->username }}" placeholder="Name">
+							<input type="text" class="form-control" id="name" name="name" value="{{ $user->name }}" placeholder="Name">
 						</div>
 						<div class="form-group">
 							<label for="username">Username</label>
