@@ -18,11 +18,11 @@
 				<form method="POST" action="{{ action('Auth\AuthController@postLogin')}}">
 					{{ csrf_field() }}
 					<div class="form-group">
-						<label for="email">Username or Email</label>
+						<label for="email">Email</label>
 						<input type="text"
 							class="form-control"
 							id="login-email"
-							placeholder="Username or Email"
+							placeholder="Email"
 							name="email">
 					</div>
 					<div class="form-group">
