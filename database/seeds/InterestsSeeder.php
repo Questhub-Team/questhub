@@ -3,6 +3,8 @@
 use Illuminate\Database\Seeder;
 use Illuminate\Eloquent\Model;
 
+use App\Models\Interest;
+
 class InterestsSeeder extends Seeder
 {
     /**
@@ -12,26 +14,32 @@ class InterestsSeeder extends Seeder
      */
     public function run()
     {
-        DB::table('interests')->insert(
-        	['name' => 'Board Games'],
-        	['name' => 'Nightlife'],
-        	['name' => 'New in Town'],
-        	['name' => 'Software Development'],
-        	['name' => 'Linux'],
-        	['name' => 'Robotics'],
-        	['name' => 'Photography'],
-        	['name' => 'Internet Startups'],
-        	['name' => 'Javascript'],
-        	['name' => 'Film'],
-        	['name' => 'Beer'],
-        	['name' => 'HTML5'],
-        	['name' => 'Sci-Fi'],
-        	['name' => 'Python'],
-        	['name' => 'Java'],
-        	['name' => 'Investing'],
-        	['name' => 'Hacking'],
-        	['name' => 'Mobile Development'],
-        	['name' => 'Pets'],
-        	['name' => 'Tabletop Games']
-        	);    }
+    	$interests = [
+			'Board Games',
+			'Nightlife',
+			'New in Town',
+			'Software Development',
+			'Linux',
+			'Robotics',
+			'Photography',
+			'Internet Startups',
+			'Javascript',
+			'Film',
+			'Beer',
+			'HTML5',
+			'Sci-Fi',
+			'Python',
+			'Java',
+			'Investing',
+			'Hacking',
+			'Mobile Development',
+			'Pets',
+			'Tabletop Games'
+		];
+        foreach ($interests as $interest) {
+        	$new_interest = new Interest;
+        	$new_interest->name = $interest;
+        	$new_interest->save();
+        }
+    }
 }
