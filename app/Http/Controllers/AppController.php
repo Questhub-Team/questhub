@@ -29,7 +29,14 @@ class AppController extends Controller
      */
     public function create()
     {
-        //
+        $client = MeetupKeyAuthClient::factory(array('key' => env('MEETUP_KEY', null)));
+        $topic = $client->getTopics(array('name' => 'Board Games'))->current();
+            
+        $interest = new \App\Models\Interest;
+        $interest->name = $topic['name'];
+
+
+        $interest->save();
     }
 
     /**
