@@ -17,5 +17,11 @@ class ProfileController extends Controller
     {
         return View::make('user');
     }
+    public function index()
+    {
+        $users = DB::table('users')->get();
+
+        return view('user.index', ['users' => $users]);
+    }
     
 }
