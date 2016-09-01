@@ -3,7 +3,6 @@
 @extends('layouts.master')
 @section('content')
 <div class="container">
-	<button type="button" class="btn btn-primary btn-lg" data-toggle="modal" data-target="#login-modal">Login</button>
 	<div class="modal fade" id="login-modal" tabindex="-1" role="dialog" aria-labelledby="login form">
 		<div class="modal-dialog modal-lg" role="document">
 			<div class="modal-content">

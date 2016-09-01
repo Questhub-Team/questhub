@@ -24,8 +24,9 @@
 			@if(Auth::check())
 			<li><a href="{{ action('UsersController@show', Auth::id()) }}" class="glyphicon glyphicon-user"> Profile<span class="sr-only">(current)</span></a></li>
 			<li><a href="{{ action('Auth\AuthController@getLogout') }}" class="glyphicon glyphicon-remove-circle"> Logout</a></li>
+			<li><a href="{{ action('AppController@showAll')}}" class="glyphicon glyphicon-menu-hamburger"> Events</a></li>
 			@else
-			<li><a href="{{ action('AppController@showAll')}}">Events</a></li>
+				<button type="button" class="btn btn-default btn-sm form-control navbar-form" data-toggle="modal" data-target="#login-modal">Login</button>
 			@endif
 		</ul>
 	</div><!-- /.navbar-collapse -->
