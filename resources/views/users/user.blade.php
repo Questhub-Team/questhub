@@ -5,11 +5,11 @@
 			<h1>User Info</h1>
 			
 			<tr>
-				<td>Username: {{Auth::user()->username}}</td>
+				<td>Username: {{$user->username}}</td>
 				<br>
-				<td>Name: {{Auth::user()->name}}</td>
+				<td>Name: {{$user->name}}</td>
 				<br>
-				<td>Email: {{Auth::user()->email}}</td>
+				<td>Email: {{$user->email}}</td>
 			</tr>
 			
 		</div>
