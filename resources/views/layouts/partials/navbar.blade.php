@@ -8,7 +8,7 @@
 			<span class="icon-bar"></span>
 			<span class="icon-bar"></span>
 			</button>
-			<a class="navbar-brand" href="/">Questhub</a>
+			<a class="navbar-brand" href="/">Questhub<span class="logo"> ? </span></a>
 		</div>
 
 	<!-- Collect the nav links, forms, and other content for toggling -->
