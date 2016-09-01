@@ -3,6 +3,9 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use DMS\Service\Meetup\MeetupKeyAuthClient;
+use Illuminate\Support\Facades\Auth;
+use App\Controllers\Auth\AuthController;
+use Illuminate\Database\Eloquent\Model;
 use App\Http\Requests;
 use App\Http\Controllers\Controller;
 use App\User;
@@ -33,6 +36,8 @@ class UsersController extends Controller
         $user->password = Input::get('password');
         $user->save();
 
+        return redirect()->action('AppController@index');
+
     }
     /**
      * Display the specified resource.
@@ -40,9 +45,8 @@ class UsersController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show($id)
+    public function show(Request $resquest, $id)
     {
-        $user = User::findOrFail($id);
         $client = MeetupKeyAuthClient::factory(array('key' => env('MEETUP_KEY')));
         $query = [
             'topic' => 'newtech',
@@ -53,7 +57,9 @@ class UsersController extends Controller
         
         $response = $client->getGroups(
             $query
-         );
+        );
+
+        $user = User::findOrFail($id);
         $data = compact('user', 'response');
         return view('users.user')->with($data);
     }

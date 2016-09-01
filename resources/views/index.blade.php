@@ -15,15 +15,23 @@
 		<div class="modal-dialog modal-lg" role="document">
 			<div class="modal-content container">
 				<h2>Login to Questhub</h2>
-				<form method="POST" action="{{ action('Auth\AuthController@getLogin')}}">
+				<form method="POST" action="{{ action('Auth\AuthController@postLogin')}}">
 					{{ csrf_field() }}
 					<div class="form-group">
-						<label for="email">Username or Email</label>
-						<input type="text" class="form-control" id="login-email" placeholder="Username or Email">
+						<label for="email">Email</label>
+						<input type="text"
+							class="form-control"
+							id="login-email"
+							placeholder="Email"
+							name="email">
 					</div>
 					<div class="form-group">
 						<label for="password">Password</label>
-						<input type="password" class="form-control" id="login-password" placeholder="Password">
+						<input type="password"
+							name="password"
+							class="form-control"
+							id="login-password"
+							placeholder="Password">
 					</div>
 					<button type="submit" class="btn btn-primary"><span class="glyphicon glyphicon-log-in"></span> Login</button>
 				</form>
@@ -31,6 +39,5 @@
 		</div>
 	</div>
 	<a href="{{ action('Auth\AuthController@postRegister')}}" class="btn btn-primary btn-lg">Register</a>
-	<h2></h2>
 </div>
 @stop

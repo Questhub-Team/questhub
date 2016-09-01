@@ -12,7 +12,6 @@
 */
 Route::get('auth/login', 'Auth\AuthController@getLogin');
 Route::post('auth/login', 'Auth\AuthController@postLogin');
-
 Route::resource('/', 'AppController');
 Route::resource('auth/register', 'AppController');
 Route::resource('users', 'UsersController');
