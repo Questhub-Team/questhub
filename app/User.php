@@ -9,7 +9,8 @@ use Illuminate\Foundation\Auth\Access\Authorizable;
 use Illuminate\Contracts\Auth\Authenticatable as AuthenticatableContract;
 use Illuminate\Contracts\Auth\Access\Authorizable as AuthorizableContract;
 use Illuminate\Contracts\Auth\CanResetPassword as CanResetPasswordContract;
-
+use App\Models\Interest;
+use App\Models\UserInterests;
 class User extends Model implements AuthenticatableContract,
                                     AuthorizableContract,
                                     CanResetPasswordContract
@@ -25,7 +26,11 @@ class User extends Model implements AuthenticatableContract,
 
     public function interests()
     {
-        return $this->hasMany(UserInterests::class);
+
+    return $this->belongsToMany(Interest::class, 'user_interests');
+
+    return $this->hasMany(UserInterests::class);
+
     }
     public function friends() 
     {

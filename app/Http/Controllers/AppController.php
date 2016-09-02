@@ -18,7 +18,14 @@ class AppController extends Controller
     public function index()
     {
         $client = MeetupKeyAuthClient::factory(array('key' => env('MEETUP_KEY', null)));
-        $response = $client->getFindTopics(array('query' => 'games', 'page' => '15'));
+        $query = [
+            'topic' => 'newtech',
+            'zip' => '78247',
+            'country' => 'us',
+            'state' => 'tx',
+            'city' => 'san antonio'
+        ];
+        $response = $client->getGroups($query);
         $data = compact('response');
         return view('index')->with($data);
     }
@@ -48,23 +55,9 @@ class AppController extends Controller
      */
     public function store(Request $request)
     {
-      // $client = MeetupKeyAuthClient::factory(array('key' => env('MEETUP_KEY')));
-      //   $query = [
-      //       'topic' => 'Social',
-      //       'country' => 'us',
-      //       'state' => 'tx',
-      //       'city' => 'san antonio'
-      //   ];
-      //   $response = $client->getGroups($query);
-      //   foreach ($response as $event) {
-      //       DB::table('events')->insert([
-      //           ['description' => $description],
-      //           ['title' => $title],
-      //           ['location' => $location],
-      //           ['price' => $price],
-      //           ['date' => $date]
-      //       ]);
-      //   }  
+        DB::table('events')->insert([
+            
+        ]);  
     }
 
     /**
@@ -81,7 +74,7 @@ class AppController extends Controller
     {
         $client = MeetupKeyAuthClient::factory(array('key' => env('MEETUP_KEY')));
         $query = [
-        'topic' => 'newtech',
+        'topic' => 'Games',
         'zip' => '78247',
         'country' => 'us',
         'state' => 'tx',
@@ -95,7 +88,7 @@ class AppController extends Controller
         'city' => 'san antonio'
         ];
         $query2 = [
-        'topic' => 'games',
+        'topic' => 'newtech',
         'zip' => '78247',
         'country' => 'us',
         'state' => 'tx',
@@ -111,8 +104,7 @@ class AppController extends Controller
             $query2
             );
         $response = array_merge($response->getData(), $response1->getData(), $response2->getData());
-        //dd($response[0], $response[count($response) - 1]);
-
+       
         $data = compact('response');
         return view('events.events')->with($data); 
     }
