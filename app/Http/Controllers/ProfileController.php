@@ -25,15 +25,15 @@ class ProfileController extends Controller
         return view('users.user', ['user' => $user]);
     }
 
-    public function updateAccount()
+    public function updateAccount(Request $request)
     {
       $id = Auth::user()->id;
       $user = Auth::user();
-      $user->username = Request::input('username');
-      $user->name = Request::input('name');
-      $user->email = Request::input('email');
+      $user->username = $request->input('username');
+      $user->name = $request->input('name');
+      $user->email = $request->input('email');
       $user->save();
-      return view('profile/index');
+      return redirect()->action('ProfileController@index');
   }
 
 
