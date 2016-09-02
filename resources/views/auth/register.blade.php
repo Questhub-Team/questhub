@@ -32,7 +32,7 @@
     color: red;
 }
 </style>
-<form class="form-horizontal" role="form" method="POST" action="/auth/register">
+<form class="form-horizontal" role="form" method="POST" action="{{ action('UsersController@store') }}">
     <input type="hidden" name="_token" value="{{ csrf_token() }}">
 
     <div class="form-group">
@@ -76,89 +76,89 @@
             
                 <div class="row">
                     <label class="btn btn-default">
-                        <input data-value="1" name="Board Games" type="checkbox" autocomplete="off">
+                        <input value="1" name="value[]" type="checkbox" autocomplete="off">
                         <span>Board Games</span><span class="glyphicon glyphicon-ok"></span>
                     </label>
                     <label class="btn btn-default">
-                        <input data-value="1" name="Nightlife" type="checkbox" autocomplete="off">
+                        <input value="2" name="value[]" type="checkbox" autocomplete="off">
                         <span>Nightlife</span><span class="glyphicon glyphicon-ok"></span>
                     </label>  
                     <label class="btn btn-default">
-                        <input data-value="1" name="New in Town" type="checkbox" autocomplete="off">
+                        <input value="3" name="value[]" type="checkbox" autocomplete="off">
                         <span>New in Town</span><span class="glyphicon glyphicon-ok"></span>
                     </label>  
                     <label class="btn btn-default">
-                        <input data-value="1" name="Software Development" type="checkbox" autocomplete="off">
+                        <input value="4" name="value[]" type="checkbox" autocomplete="off">
                         <span>Software Development</span><span class="glyphicon glyphicon-ok"></span>
                     </label>  
                     <label class="btn btn-default">
-                        <input data-value="1" name="Linux" type="checkbox" autocomplete="off">
+                        <input value="5" name="value[]" type="checkbox" autocomplete="off">
                         <span>Linux</span><span class="glyphicon glyphicon-ok"></span>
                     </label>
                 </div>
                 <div class="row">
                     <label class="btn btn-default">
-                        <input data-value="1" name="Robotics" type="checkbox" autocomplete="off">
+                        <input value="6" name="value[]" type="checkbox" autocomplete="off">
                         <span>Robotics</span><span class="glyphicon glyphicon-ok"></span>
                     </label>
                     <label class="btn btn-default">
-                        <input data-value="1" name="Photography" type="checkbox" autocomplete="off">
+                        <input value="7" name="value[]" type="checkbox" autocomplete="off">
                         <span>Photography</span><span class="glyphicon glyphicon-ok"></span>
                     </label>  
                     <label class="btn btn-default">
-                        <input data-value="1" name="Internet Startups" type="checkbox" autocomplete="off">
+                        <input value="8" name="value[]" type="checkbox" autocomplete="off">
                         <span>Internet Startups</span><span class="glyphicon glyphicon-ok"></span>
                     </label>  
                     <label class="btn btn-default">
-                        <input data-value="1" name="Javascript" type="checkbox" autocomplete="off">
+                        <input value="9" name="value[]" type="checkbox" autocomplete="off">
                         <span>Javascript</span><span class="glyphicon glyphicon-ok"></span>
                     </label>  
                     <label class="btn btn-default">
-                        <input data-value="1" name="Film" type="checkbox" autocomplete="off">
+                        <input value="10" name="value[]" type="checkbox" autocomplete="off">
                         <span>Film</span><span class="glyphicon glyphicon-ok"></span>
                     </label>
                 </div>
                 <div class="row">
                     <label class="btn btn-default">
-                        <input data-value="1" name="Beer" type="checkbox" autocomplete="off">
+                        <input value="11" name="value[]" type="checkbox" autocomplete="off">
                         <span>Beer</span><span class="glyphicon glyphicon-ok"></span>
                     </label>
                     <label class="btn btn-default">
-                        <input data-value="1" name="HTML5" type="checkbox" autocomplete="off">
+                        <input value="12" name="value[]" type="checkbox" autocomplete="off">
                         <span>HTML5</span><span class="glyphicon glyphicon-ok"></span>
                     </label>  
                     <label class="btn btn-default">
-                        <input data-value="1" name="Sci-Fi" type="checkbox" autocomplete="off">
+                        <input value="13" name="value[]" type="checkbox" autocomplete="off">
                         <span>Sci-Fi</span><span class="glyphicon glyphicon-ok"></span>
                     </label>  
                     <label class="btn btn-default">
-                        <input data-value="1" name="Python" type="checkbox" autocomplete="off">
+                        <input value="14" name="value[]" type="checkbox" autocomplete="off">
                         <span>Python</span><span class="glyphicon glyphicon-ok"></span>
                     </label>  
                     <label class="btn btn-default">
-                        <input data-value="1" name="Java" type="checkbox" autocomplete="off">
+                        <input value="15" name="value[]" type="checkbox" autocomplete="off">
                         <span>Java</span><span class="glyphicon glyphicon-ok"></span>
                     </label>
                 </div>
                 <div class="row">
                     <label class="btn btn-default">
-                        <input data-value="1" name="Investing" type="checkbox" autocomplete="off">
+                        <input value="16" name="value[]" type="checkbox" autocomplete="off">
                         <span>Investing</span><span class="glyphicon glyphicon-ok"></span>
                     </label>
                     <label class="btn btn-default">
-                        <input data-value="1" name="Hacking" type="checkbox" autocomplete="off">
+                        <input value="17" name="value[]" type="checkbox" autocomplete="off">
                         <span>Hacking</span><span class="glyphicon glyphicon-ok"></span>
                     </label>  
                     <label class="btn btn-default">
-                        <input data-value="1" name="Mobile Development" type="checkbox" autocomplete="off">
+                        <input value="18" name="value[]" type="checkbox" autocomplete="off">
                         <span>Mobile Development</span><span class="glyphicon glyphicon-ok"></span>
                     </label>  
                     <label class="btn btn-default">
-                        <input data-value="1" name="Pets" type="checkbox" autocomplete="off">
+                        <input value="19" name="value[]" type="checkbox" autocomplete="off">
                         <span>Pets</span><span class="glyphicon glyphicon-ok"></span>
                     </label>  
                     <label class="btn btn-default">
-                        <input data-value="1" name="Tabletop Games" type="checkbox" autocomplete="off">
+                        <input value="20" name="value[]" type="checkbox" autocomplete="off">
                         <span>Tabletop Games</span><span class="glyphicon glyphicon-ok"></span>
                     </label>
                 </div>
