@@ -1,67 +1,182 @@
 @extends('layouts.master')
 @section('content')
+<div>
 	<div>
-		<div>
-			<h1>User Info</h1>
-			
-			<tr>
-				<td>Username: {{$user->username}}</td>
-				<br>
-				<td>Name: {{$user->name}}</td>
-				<br>
-				<td>Email: {{$user->email}}</td>
-			</tr>
-			
-		</div>
-		<button type="button" class="btn btn-primary" data-toggle="modal" data-target="#edit-modal">Edit profile</button>
+		<h1>User Info</h1>
 
-		<div class="modal fade" id="edit-modal" tabindex="-1" role="dialog" aria-labelledby="edit profile">
-			<div class="modal-dialog modal-lg" role="document">
-				<div class="modal-content">
-					<div class="container-fluid">
-						<h2>Edit Profile for {{ $user->name }}</h2>
+		<tr>
+			<td>Username: {{$user->username}}</td>
+			<br>
+			<td>Name: {{$user->name}}</td>
+			<br>
+			<td>Email: {{$user->email}}</td>
+		</tr>
 
-						<form method="POST" action="{{ action('ProfileController@updateAccount') }}" id="edit-profile-form">
-							<input type="hidden" name="_method" value="PUT">
-							{{ csrf_field() }}
+	</div>
+	<button type="button" class="btn btn-primary" data-toggle="modal" data-target="#edit-modal">Edit profile</button>
 
-							<div class="form-group" action="/users/user">
-								<label for="name">Name</label>
-								<input type="text" class="form-control" id="name" name="name" value="{{ $user->name }}" placeholder="Name">
-							</div>
-							<div class="form-group">
-								<label for="username">Username</label>
-								<input type="text" class="form-control" id="username" name="username" value="{{ $user->username }}" placeholder="Username">
-							</div>
-							<div class="form-group">
-								<label for="email">Email</label>
-								<input type="email" class="form-control" id="email" name="email" value="{{ $user->email }}" placeholder="Email">
-							</div>
-							<div class="form-group">
-								<label for="password">Password</label>
-								<input type="password" class="form-control" id="password" name="password" placeholder="Password">
-							</div>
-								<button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-								<button type="submit" class="btn btn-primary">Submit</button>
-						</form>
-					</div>
+	<div class="modal fade" id="edit-modal" tabindex="-1" role="dialog" aria-labelledby="edit profile">
+		<div class="modal-dialog modal-lg" role="document">
+			<div class="modal-content">
+				<div class="container-fluid">
+					<h2>Edit Profile for {{ $user->name }}</h2>
+
+					<form method="POST" action="{{ action('ProfileController@updateAccount') }}" id="edit-profile-form">
+						<input type="hidden" name="_method" value="PUT">
+						{{ csrf_field() }}
+
+						<div class="form-group" action="/users/user">
+							<label for="name">Name</label>
+							<input type="text" class="form-control" id="name" name="name" value="{{ $user->name }}" placeholder="Name">
+						</div>
+						<div class="form-group">
+							<label for="username">Username</label>
+							<input type="text" class="form-control" id="username" name="username" value="{{ $user->username }}" placeholder="Username">
+						</div>
+						<div class="form-group">
+							<label for="email">Email</label>
+							<input type="email" class="form-control" id="email" name="email" value="{{ $user->email }}" placeholder="Email">
+						</div>
+						<div class="form-group">
+							<label for="password">Password</label>
+							<input type="password" class="form-control" id="password" name="password" placeholder="Password">
+						</div>
+						<button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+						<button type="submit" class="btn btn-primary">Submit</button>
+					</form>
 				</div>
 			</div>
 		</div>
-		<form>
-			<input type="hidden" name="check-in" value="1">
-			<button type="submit" class="btn btn-success"><span class="glyphicon glyphicon-check"></span> Quest Check-In</button>
-		</form>
 	</div>
-	<div>
-		<h2>Liked Events</h2>
+	<form>
+		<input type="hidden" name="check-in" value="1">
+		<button type="submit" class="btn btn-success"><span class="glyphicon glyphicon-check"></span> Quest Check-In</button>
+	</form>
+</div>
+<h2>Interests</h2>
+@foreach ($user->interests as $interest)
+<form method = 'post' action="{{{ action('ProfileController@destroy', $interest->id)}}}">
+<input type="hidden" name="_method" value="DELETE">
+	{{ csrf_field() }}
+        <button type="submit" class="btn btn-danger">{{ $interest->name }} </button>
+</form>
+@endforeach
+<br>
+<button class='btn btn-success' data-toggle="modal" data-target="#interest-modal">Add Interests</button>
+<div class="modal fade" id="interest-modal" tabindex="-1" role="dialog" aria-labelledby="edit interests">
+	<div class="modal-dialog modal-lg" role="document">
+		<div class="modal-content">
+			<div class="container-fluid">
+			<h2>Interest Panel</h2>
+
+				<form class="form-horizontal" role="form" method="POST" action="{{ action('ProfileController@updateInterests') }}">
+				<input type="hidden" name="_method" value="PUT">
+				{{ csrf_field() }}
+				<div class="btn-group col-lg-12 form-group" data-toggle="buttons">          
+            	<div class="row">
+                    <label class="btn btn-default">
+                        <input value="1" name="value[]" type="checkbox" autocomplete="off">
+                        <span>Board Games</span><span class="glyphicon glyphicon-ok"></span>
+                    </label>
+                    <label class="btn btn-default">
+                        <input value="2" name="value[]" type="checkbox" autocomplete="off">
+                        <span>Nightlife</span><span class="glyphicon glyphicon-ok"></span>
+                    </label>  
+                    <label class="btn btn-default">
+                        <input value="3" name="value[]" type="checkbox" autocomplete="off">
+                        <span>New in Town</span><span class="glyphicon glyphicon-ok"></span>
+                    </label>  
+                    <label class="btn btn-default">
+                        <input value="4" name="value[]" type="checkbox" autocomplete="off">
+                        <span>Software Development</span><span class="glyphicon glyphicon-ok"></span>
+                    </label>  
+                    <label class="btn btn-default">
+                        <input value="5" name="value[]" type="checkbox" autocomplete="off">
+                        <span>Linux</span><span class="glyphicon glyphicon-ok"></span>
+                    </label>
+                </div>
+                <div class="row">
+                    <label class="btn btn-default">
+                        <input value="6" name="value[]" type="checkbox" autocomplete="off">
+                        <span>Robotics</span><span class="glyphicon glyphicon-ok"></span>
+                    </label>
+                    <label class="btn btn-default">
+                        <input value="7" name="value[]" type="checkbox" autocomplete="off">
+                        <span>Photography</span><span class="glyphicon glyphicon-ok"></span>
+                    </label>  
+                    <label class="btn btn-default">
+                        <input value="8" name="value[]" type="checkbox" autocomplete="off">
+                        <span>Internet Startups</span><span class="glyphicon glyphicon-ok"></span>
+                    </label>  
+                    <label class="btn btn-default">
+                        <input value="9" name="value[]" type="checkbox" autocomplete="off">
+                        <span>Javascript</span><span class="glyphicon glyphicon-ok"></span>
+                    </label>  
+                    <label class="btn btn-default">
+                        <input value="10" name="value[]" type="checkbox" autocomplete="off">
+                        <span>Film</span><span class="glyphicon glyphicon-ok"></span>
+                    </label>
+                </div>
+                <div class="row">
+                    <label class="btn btn-default">
+                        <input value="11" name="value[]" type="checkbox" autocomplete="off">
+                        <span>Beer</span><span class="glyphicon glyphicon-ok"></span>
+                    </label>
+                    <label class="btn btn-default">
+                        <input value="12" name="value[]" type="checkbox" autocomplete="off">
+                        <span>HTML5</span><span class="glyphicon glyphicon-ok"></span>
+                    </label>  
+                    <label class="btn btn-default">
+                        <input value="13" name="value[]" type="checkbox" autocomplete="off">
+                        <span>Sci-Fi</span><span class="glyphicon glyphicon-ok"></span>
+                    </label>  
+                    <label class="btn btn-default">
+                        <input value="14" name="value[]" type="checkbox" autocomplete="off">
+                        <span>Python</span><span class="glyphicon glyphicon-ok"></span>
+                    </label>  
+                    <label class="btn btn-default">
+                        <input value="15" name="value[]" type="checkbox" autocomplete="off">
+                        <span>Java</span><span class="glyphicon glyphicon-ok"></span>
+                    </label>
+                </div>
+                <div class="row">
+                    <label class="btn btn-default">
+                        <input value="16" name="value[]" type="checkbox" autocomplete="off">
+                        <span>Investing</span><span class="glyphicon glyphicon-ok"></span>
+                    </label>
+                    <label class="btn btn-default">
+                        <input value="17" name="value[]" type="checkbox" autocomplete="off">
+                        <span>Hacking</span><span class="glyphicon glyphicon-ok"></span>
+                    </label>  
+                    <label class="btn btn-default">
+                        <input value="18" name="value[]" type="checkbox" autocomplete="off">
+                        <span>Mobile Development</span><span class="glyphicon glyphicon-ok"></span>
+                    </label>  
+                    <label class="btn btn-default">
+                        <input value="19" name="value[]" type="checkbox" autocomplete="off">
+                        <span>Pets</span><span class="glyphicon glyphicon-ok"></span>
+                    </label>  
+                    <label class="btn btn-default">
+                        <input value="20" name="value[]" type="checkbox" autocomplete="off">
+                        <span>Tabletop Games</span><span class="glyphicon glyphicon-ok"></span>
+                    </label>
+                </div>
+			</div>
+			<button type="submit" class="btn btn-primary">
+        	Update Interests
+        </button>
+		</div>
 	</div>
-	<div>
-		 <h2>Available Quests</h2>
-	</div>
-	<div class = "col-sm-4">
-    @foreach ($user->interests as $interest)
-        <button class='btn btn-default'>{{ $interest->name }}</button>
-    @endforeach
+</div>
+</div>
+</form>
+<div>
+	<h2>Liked Events</h2>
+</div>
+<div>
+	<h2>Available Quests</h2>
+</div>
+<div class = "col-sm-4">
+
 </div>
 @stop
