@@ -15,10 +15,11 @@
 						{{ (isset($responseItem['description'])) ? strip_tags($responseItem['description']) : '' }}
 						<p>Group ID: {{ $responseItem['id'] }}</p>
 						<p>Group Members: {{ $responseItem['members'] }}</p>
-						<p>Locarion: {{ $responseItem['city'] }}</p>
+						<p>Location: {{ $responseItem['city'] }}</p>
 					<form method="POST" action="{{ action('AppController@store') }}">
 						{{ csrf_field() }}
 						<input type='hidden' name='like' value='1'>
+						<input type="hidden" name="description" value="{{ (isset($responseItem['description'])) ? strip_tags($responseItem['description']) : '' }}">
 						<button type='submit' class='btn btn-default'>Like</button>
 					</form>
 					<form method="POST" action="#">
