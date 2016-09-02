@@ -9,7 +9,7 @@ use Illuminate\Database\Eloquent\Model;
 use App\Http\Requests;
 use App\Http\Controllers\Controller;
 use App\User;
-use App\UserInterests;
+use App\Models\UserInterests;
 use Hash;
 
 class UsersController extends Controller
