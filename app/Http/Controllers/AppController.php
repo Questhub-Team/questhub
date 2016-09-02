@@ -55,14 +55,12 @@ class AppController extends Controller
      */
     public function store(Request $request)
     {
-    
-        $events = new Events();
-        $events->name = $request->input('name');
-        $events->location = $responseItem['city'];
-        $events->description = $responseItem['description'];
-        $events->interest_id = $responseItem['id']
-
-        $events->save();
+        // $events = new Events();
+        // $events->name = 
+        // $events->location = 
+        // $events->description = 
+        // $events->price = 
+        // $events->date = 
 
     }
 
@@ -78,39 +76,19 @@ class AppController extends Controller
     }
     public function showAll()
     {
-        $client = MeetupKeyAuthClient::factory(array('key' => env('MEETUP_KEY')));
+        $client = MeetupKeyAuthClient::factory(array('key' => env('MEETUP_KEY', null)));
         $query = [
-        'topic' => 'Games',
-        'zip' => '78247',
-        'country' => 'us',
-        'state' => 'tx',
-        'city' => 'san antonio'
+            'topic' => 'python,html5,python,newintown,linux,robotics,javascript,film,beer,sci-fi,java,
+                investing,hacking,nightlife,',
+            'city' => 'San Antonio',
+            'country' => 'us',
+            'state' => 'tx'
+            
         ];
-        $query1 = [
-        'topic' => 'social',
-        'zip' => '78247',
-        'country' => 'us',
-        'state' => 'tx',
-        'city' => 'san antonio'
-        ];
-        $query2 = [
-        'topic' => 'newtech',
-        'zip' => '78247',
-        'country' => 'us',
-        'state' => 'tx',
-        'city' => 'san antonio'
-        ];
-        $response = $client->getGroups(
+        $response = $client->GetOpenEvents(
             $query
             );
-        $response1 = $client->getGroups(
-            $query1
-            );
-        $response2 = $client->getGroups(
-            $query2
-            );
-        $response = array_merge($response->getData(), $response1->getData(), $response2->getData());
-       
+        // dd($response)->daily();
         $data = compact('response');
         return view('events.events')->with($data); 
     }
@@ -146,5 +124,9 @@ class AppController extends Controller
     public function destroy($id)
     {
         //
+    }
+    public function schedule(Schedule $schedule)
+    {
+
     }
 }
