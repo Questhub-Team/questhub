@@ -20,7 +20,9 @@
 				<div class="modal-content">
 					<div class="container-fluid">
 						<h2>Edit Profile for {{ $user->name }}</h2>
-						<form method="POST" action="{{ action('UsersController@update') }}" id="edit-profile-form">
+						<form method="POST" action="{{ action('ProfileController@updateAccount') }}" id="edit-profile-form">
+							<input type="hidden" name="_method" value="PUT">
+							{{ csrf_field() }}
 							<div class="form-group" action="/users/user">
 								<label for="name">Name</label>
 								<input type="text" class="form-control" id="name" name="name" value="{{ $user->name }}" placeholder="Name">

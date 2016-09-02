@@ -27,7 +27,7 @@ Route::get('/all-events', 'AppController@showAll');
 Route::get('auth/logout', 'Auth\AuthController@getLogout');
 
 Route::get('profile', 'ProfileController@index');
-Route::post('profile', 'ProfileController@updateAccount');
+Route::put('profile', 'ProfileController@updateAccount');
 
 
 
