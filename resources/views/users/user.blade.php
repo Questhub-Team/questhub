@@ -37,7 +37,8 @@
 								<label for="password">Password</label>
 								<input type="password" class="form-control" id="password" name="password" placeholder="Password">
 							</div>
-							<button type="submit" class="btn btn-default">Submit</button>
+								<button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+								<button type="submit" class="btn btn-primary">Submit</button>
 						</form>
 					</div>
 				</div>
