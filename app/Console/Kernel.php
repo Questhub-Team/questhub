@@ -6,7 +6,6 @@ use Illuminate\Console\Scheduling\Schedule;
 use Illuminate\Foundation\Console\Kernel as ConsoleKernel;
 use DMS\Service\Meetup\MeetupKeyAuthClient;
 use App\Models\Event;
-use Illuminate\Database\Query\Builder;
 
 class Kernel extends ConsoleKernel
 {
@@ -43,17 +42,17 @@ class Kernel extends ConsoleKernel
             $response = $client->GetOpenEvents(
                 $query
                 );
-            Event::ungaurd();
+            Event::unguard();
             foreach ($response as $item) {
                 $event = Event::firstOrCreate([
                     'api_event_id' => $item['id']
                 ]);
                 $event->name = $item['name'];
-                $event->location = implode($item['venue'], ' ');
-                $event->description = $item['description'];
+                $event->location = (isset($item['venue'])) ? implode($item['venue'], ' ') : null;
+                $event->description = (isset($item['description'])) ? $item['description'] : null;
                 $event->save();
             }
-            Event::regaurd();
+            Event::reguard();
 
         })->everyMinute();
 
