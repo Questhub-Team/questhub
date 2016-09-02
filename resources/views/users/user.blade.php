@@ -55,8 +55,8 @@
 		 <h2>Available Quests</h2>
 	</div>
 	<div class = "col-sm-4">
-    @foreach ($response as $responseItem)
-        <button class='btn btn-default'>{{ $responseItem['name'] }}</button>
+    @foreach ($user->interests as $interest)
+        <button class='btn btn-default'>{{ $interest->name }}</button>
     @endforeach
 </div>
 @stop
