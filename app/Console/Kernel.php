@@ -6,6 +6,7 @@ use Illuminate\Console\Scheduling\Schedule;
 use Illuminate\Foundation\Console\Kernel as ConsoleKernel;
 use DMS\Service\Meetup\MeetupKeyAuthClient;
 use App\Models\Event;
+use Illuminate\Database\Query\Builder;
 
 class Kernel extends ConsoleKernel
 {
