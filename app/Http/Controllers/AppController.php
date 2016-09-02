@@ -56,13 +56,13 @@ class AppController extends Controller
     public function store(Request $request)
     {
     
-        $events = new Events();
-        $events->name = $responseItem['name'];
-        $events->location = $responseItem['city'];
-        $events->description = $responseItem['description'];
-        $events->interest_id = $responseItem['id']
+        // $events = new Events();
+        // $events->name = $responseItem['name'];
+        // $events->location = $responseItem['city'];
+        // $events->description = $responseItem['description'];
+        // $events->interest_id = $responseItem['id']
 
-        $events->save();
+        // $events->save();
 
     }
 
