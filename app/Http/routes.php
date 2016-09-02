@@ -25,5 +25,9 @@ Route::controllers(['password' => 'Auth\PasswordController',]);
 Route::get('/all-events', 'AppController@showAll');
 
 Route::get('auth/logout', 'Auth\AuthController@getLogout');
-Route::get('profile', array('as' => 'auth', 'uses' => 'ProfileController@getProfile'));
+
+Route::get('profile', 'ProfileController@index');
+Route::post('profile', 'ProfileController@updateAccount');
+
+
 
