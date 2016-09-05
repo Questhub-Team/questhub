@@ -16,7 +16,7 @@
 		<form method="GET" class="navbar-form navbar-right">
 			{{ csrf_field() }}
 			<div class="form-group">
-				<input name="keyword" type="text" class="form-control" placeholder="Search">
+				<input name="search" type="text" class="form-control" placeholder="Search">
 			</div>
 			<button type="submit" class="btn btn-default">Search</button>
 		</form>
