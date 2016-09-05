@@ -7,6 +7,7 @@ use DMS\Service\Meetup\MeetupKeyAuthClient;
 use App\Http\Requests;
 use App\Http\Controllers\Controller;
 use Illuminate\Session\Middleware;
+use DB;
 
 class AppController extends Controller
 {
@@ -76,19 +77,23 @@ class AppController extends Controller
     }
     public function showAll()
     {
-        $client = MeetupKeyAuthClient::factory(array('key' => env('MEETUP_KEY', null)));
-        $query = [
-            'topic' => 'python,html5,python,newintown,linux,robotics,javascript,film,beer,sci-fi,java,
-                investing,hacking,nightlife,',
-            'city' => 'San Antonio',
-            'country' => 'us',
-            'state' => 'tx'
+        // $client = MeetupKeyAuthClient::factory(array('key' => env('MEETUP_KEY', null)));
+        // $query = [
+        //     'topic' => 'python,html5,python,newintown,linux,robotics,javascript,film,beer,sci-fi,java,
+        //         investing,hacking,nightlife,',
+        //     'city' => 'San Antonio',
+        //     'country' => 'us',
+        //     'state' => 'tx'
             
-        ];
-        $response = $client->GetOpenEvents(
-            $query
-            );
-        // dd($response)->daily();
+        // ];
+        // $response = $client->GetOpenEvents(
+        //     $query
+        //     );
+        // // dd($response)->daily();
+        // $data = compact('response');
+
+        $response = DB::select('SELECT * FROM events');
+        // dd($response);
         $data = compact('response');
         return view('events.events')->with($data); 
     }
