@@ -9,16 +9,16 @@
 </style>
 	<div>
 		<h1>Events</h1>
-			@foreach ($response as $responseItem)
+			@foreach ($response as $key => $responseItem)
 				<div class="col-md-4 events">
-					<h4><a href="{{ (isset($responseItem['event_url'])) ? $responseItem['event_url'] : '' }}" target="_BLANK">
-						Name: {{ $responseItem['name'] }}</a></h4>
+					<h4><a href="{{ (isset($responseItem[$key]['event_url'])) ? $responseItem[$key]['event_url'] : '' }}" target="_BLANK">
+						Name: {{ $responseItem[$key]['name'] }}</a></h4>
 
-						<p>Local: {{ (isset($responseItem['venue'])) ? implode($responseItem['venue'], ' ') : '' }}</p>
+						<p>Local: {{ (isset($responseItem[$key]['venue'])) ? implode($responseItem[$key]['venue'], ' ') : '' }}</p>
 
-						<p>Id: {{ $responseItem['id'] }}</p>
+						<p>Id: {{ $responseItem[$key]['id'] }}</p>
 
-						<p>{{ (isset($responseItem['description'])) ? strip_tags($responseItem['description']) : '' }}</p>
+						<p>{{ (isset($responseItem[$key]['description'])) ? strip_tags($responseItem[$key]['description']) : '' }}</p>
 					<form method="POST" action="{{ action('AppController@store') }}">
 						{{ csrf_field() }}
 						<input type='hidden' name='name' value="">
