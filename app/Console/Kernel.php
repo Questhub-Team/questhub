@@ -27,7 +27,7 @@ class Kernel extends ConsoleKernel
     protected function schedule(Schedule $schedule)
     {
         $schedule->command('inspire')
-                 ->daily();
+                 ->hourly();
 
         $schedule->call(function () {
             $client = MeetupKeyAuthClient::factory(array('key' => env('MEETUP_KEY', null)));

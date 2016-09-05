@@ -73,7 +73,7 @@ class AppController extends Controller
      */
     public function show($id)
     {
-        //
+        return view('events.events')->with($data);
     }
     public function showAll()
     {
@@ -130,8 +130,14 @@ class AppController extends Controller
     {
         //
     }
-    public function schedule(Schedule $schedule)
+    public function search(Post $post, Request $request)
     {
+        $search = $request->input('search');
 
+        if ($search) {
+            $results = Post::searchPosts($search);
+            $data = compact('results');
+        }
+        return redirect()->action('AppController@show')->with($data);
     }
 }
