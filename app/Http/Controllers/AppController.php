@@ -76,9 +76,8 @@ class AppController extends Controller
         ->where('name', 'LIKE', "%{$search}%")
         ->where('description', 'LIKE', "%{$search}%")
         ->where('location', 'LIKE', "%{$search}%")->get();
-        dd($searchResult);
         $data = compact('searchResult');
-        return view('events.events')->with($data);
+        return view('events.searchresults')->with($data);
     }
     public function showAll()
     {

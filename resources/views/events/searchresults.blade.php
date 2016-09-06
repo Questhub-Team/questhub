@@ -8,8 +8,8 @@
 	}
 </style>
 	<div>
-		<h1>Events</h1>
-			@foreach ($response as $responseItem)
+		<h1>Search Result</h1>
+			@foreach ($searchResult as $responseItem)
 				<div class="col-md-4 events">
 					<h4><a href="{{ (isset($responseItem->event_url)) ? $responseItem->event_url : '' }}" target="_BLANK">
 						Name: {{ $responseItem->name }}</a></h4>
