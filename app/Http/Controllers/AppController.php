@@ -71,27 +71,19 @@ class AppController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show($id)
+    public function show($id, $searchResult)
     {
+        $searchResult = DB::table('events')->select('name', 'description', 'location')
+        ->where('name', 'LIKE', "%{$search}%")
+        ->where('description', 'LIKE', "%{$search}%")
+        ->where('location', 'LIKE', "%{$search}%")->get();
+        dd($searchResult);
+        $data = compact('searchResult');
         return view('events.events')->with($data);
     }
     public function showAll()
     {
-        // $client = MeetupKeyAuthClient::factory(array('key' => env('MEETUP_KEY', null)));
-        // $query = [
-        //     'topic' => 'python,html5,python,newintown,linux,robotics,javascript,film,beer,sci-fi,java,
-        //         investing,hacking,nightlife,',
-        //     'city' => 'San Antonio',
-        //     'country' => 'us',
-        //     'state' => 'tx'
-            
-        // ];
-        // $response = $client->GetOpenEvents(
-        //     $query
-        //     );
-        // // dd($response)->daily();
-        // $data = compact('response');
-
+        
         $response = DB::select('SELECT * FROM events');
         // dd($response);
         $data = compact('response');

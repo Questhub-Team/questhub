@@ -13,7 +13,7 @@
 
 	<!-- Collect the nav links, forms, and other content for toggling -->
 	<div class="collapse navbar-collapse" id="navbar-collapse">
-		<form method="GET" class="navbar-form navbar-right">
+		<form method="POST" class="navbar-form navbar-right" action="{{ 'AppController@search' }}">
 			{{ csrf_field() }}
 			<div class="form-group">
 				<input name="search" type="text" class="form-control" placeholder="Search">

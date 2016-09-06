@@ -3,6 +3,7 @@
 namespace App;
 
 use Illuminate\Database\Eloquent\Model;
+use DB;
 
 class Events extends Model
 {
@@ -12,6 +13,10 @@ class Events extends Model
 
     public static function search($search)
 	{
-		return Event::where('description', 'LIKE', '%' . $search . '%')->with('user');
+		$searchResult = DB::table('events')->select('name', 'description', 'location')
+		->where('name', 'LIKE', "%{$search}%")
+		->where('description', 'LIKE', "%{$search}%")
+		->where('location', 'LIKE', "%{$search}%")->get();
+		return $searchResult;
 	}
 }

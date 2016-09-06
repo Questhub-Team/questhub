@@ -32,7 +32,7 @@ class Kernel extends ConsoleKernel
         $schedule->call(function () {
             $client = MeetupKeyAuthClient::factory(array('key' => env('MEETUP_KEY', null)));
             $query = [
-                'topic' => 'python,html5,python,newintown,linux,robotics,javascript,film,beer,sci-fi,java,
+                'topic' => 'python,html5,newintown,linux,robotics,javascript,film,beer,sci-fi,java,
                 investing,hacking,nightlife,',
                 'city' => 'San Antonio',
                 'country' => 'us',
@@ -42,9 +42,9 @@ class Kernel extends ConsoleKernel
             $response = $client->GetOpenEvents(
                 $query
                 );
-            Event::unguard();
+            Events::unguard();
             foreach ($response as $item) {
-                $event = Event::firstOrCreate([
+                $event = Events::firstOrCreate([
                     'api_event_id' => $item['id']
                 ]);
                 $event->name = $item['name'];
