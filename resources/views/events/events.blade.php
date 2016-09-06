@@ -14,9 +14,7 @@
 					<h4><a href="{{ (isset($responseItem->event_url)) ? $responseItem->event_url : '' }}" target="_BLANK">
 						Name: {{ $responseItem->name }}</a></h4>
 
-						<p>Local: {{ (isset($responseItem->venue)) ? implode($responseItem->venue, ' ') : '' }}</p>
-
-						<p>Id: {{ $responseItem->id }}</p>
+						<p>Location: {{ (isset($responseItem->venue)) ? implode($responseItem->venue, ' ') : '' }}</p>
 
 						<p>{{ (isset($responseItem->description)) ? strip_tags($responseItem->description) : '' }}</p>
 					<form method="POST" action="{{ action('AppController@store') }}">

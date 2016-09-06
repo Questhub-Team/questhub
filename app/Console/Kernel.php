@@ -33,12 +33,13 @@ class Kernel extends ConsoleKernel
         $schedule->call(function () {
             $client = MeetupKeyAuthClient::factory(array('key' => env('MEETUP_KEY', null)));
             $query = [
-            'topic' => 'python,html5,python,newintown,linux,robotics,javascript,film,beer,sci-fi,java,
-            investing,hacking,nightlife,',
-            'city' => 'San Antonio',
-            'country' => 'us',
-            'state' => 'tx',
-            'fields' => 'topics',
+                'topic' => 'python,html5,newintown,linux,robotics,javascript,
+                film,beer,sci-fi,java,
+                investing,hacking,nightlife,',
+                'city' => 'San Antonio',
+                'country' => 'us',
+                'state' => 'tx',
+                'fields' => 'topics',
             ];
             $response = $client->GetOpenEvents($query);
 

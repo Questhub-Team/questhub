@@ -74,27 +74,20 @@ class AppController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show($id)
+    public function show(Request $request)
     {
-        return view('events.events')->with($data);
+        $search = $request->input('search');
+        $searchResult = DB::table('events')->select('name', 'description', 'location')
+        ->where('name', 'LIKE', "%{$search}%")
+        ->orWhere('description', 'LIKE', "%{$search}%")
+        ->orWhere('location', 'LIKE', "%{$search}%")->get();
+        // dd($searchResult);
+        $data = compact('searchResult');
+        return view('events.searchresults')->with($data);
     }
     public function showAll()
     {
-        // $client = MeetupKeyAuthClient::factory(array('key' => env('MEETUP_KEY', null)));
-        // $query = [
-        //     'topic' => 'python,html5,python,newintown,linux,robotics,javascript,film,beer,sci-fi,java,
-        //         investing,hacking,nightlife,',
-        //     'city' => 'San Antonio',
-        //     'country' => 'us',
-        //     'state' => 'tx'
-            
-        // ];
-        // $response = $client->GetOpenEvents(
-        //     $query
-        //     );
-        // // dd($response)->daily();
-        // $data = compact('response');
-
+        
         $response = DB::select('SELECT * FROM events');
         // dd($response);
         $data = compact('response');
@@ -132,15 +125,5 @@ class AppController extends Controller
     public function destroy($id)
     {
         //
-    }
-    public function search(Post $post, Request $request)
-    {
-        $search = $request->input('search');
-
-        if ($search) {
-            $results = Post::searchPosts($search);
-            $data = compact('results');
-        }
-        return redirect()->action('AppController@show')->with($data);
     }
 }
