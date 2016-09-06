@@ -42,4 +42,7 @@ class InterestsSeeder extends Seeder
         	$new_interest->save();
         }
     }
+
+
+    
 }
