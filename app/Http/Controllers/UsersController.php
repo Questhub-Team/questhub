@@ -11,6 +11,7 @@ use App\Http\Controllers\Controller;
 use App\User;
 use App\Models\UserInterests;
 use Hash;
+use DB;
 
 class UsersController extends Controller
     {
@@ -66,9 +67,16 @@ class UsersController extends Controller
      */
     public function show(Request $resquest, $id)
     {
-        
         $user = User::findOrFail($id);
-        $data = compact('user', 'response');
+
+        $userEvents = DB::table('events')
+                ->join('user_events', 'user_events.event_id', '=', 'events.id')
+                ->join('users', 'users.id', '=', 'user_events.user_id')
+                ->where('users.id', '=', $user->id)
+                ->select('events.name', 'events.location', 'events.description')
+                ->get();
+        $data = compact('user', 'userEvents');
+
         return view('users.user')->with($data);
     }
     /**
@@ -98,8 +106,35 @@ class UsersController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
+    public function updateAccount(Request $request)
+        {
+            $id = Auth::user()->id;
+            $user = Auth::user();
+            $user->username = $request->input('username');
+            $user->name = $request->input('name');
+            $user->email = $request->input('email');
+            $user->save();
+            return redirect()->action('UsersController@show');
+        }
+
+        public function updateInterests(Request $request){
+            UserInterests::unguard();
+            foreach ($request->input('value') as $interest_id)
+            {
+                $user_interests = UserInterests::firstOrCreate([
+                        'interest_id' => $interest_id,
+                        'user_id' => $request->user()->id
+                ]);
+            }
+            UserInterests::reguard();
+
+            return redirect()->action('UsersController@show');
+        }
+        public function destroy(Request $request, $id)
     {
-        //
+        $user_interest = \App\Models\UserInterests::where('interest_id', $id)->first();
+        $user_interest->delete();
+        $request->session()->flash('message', 'Interest has been deleted');
+        return redirect()->action('UsersController@show');
     }
 }
