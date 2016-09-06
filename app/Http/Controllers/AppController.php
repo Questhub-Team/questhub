@@ -79,8 +79,9 @@ class AppController extends Controller
         $search = $request->input('search');
         $searchResult = DB::table('events')->select('name', 'description', 'location')
         ->where('name', 'LIKE', "%{$search}%")
-        ->where('description', 'LIKE', "%{$search}%")
-        ->where('location', 'LIKE', "%{$search}%")->get();
+        ->orWhere('description', 'LIKE', "%{$search}%")
+        ->orWhere('location', 'LIKE', "%{$search}%")->get();
+        // dd($searchResult);
         $data = compact('searchResult');
         return view('events.searchresults')->with($data);
     }
