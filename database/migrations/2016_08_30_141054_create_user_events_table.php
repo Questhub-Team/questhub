@@ -21,8 +21,7 @@ class CreateUserEventsTable extends Migration
             $table->integer('event_id')->unsigned();
             $table->foreign('event_id')->references('id')->on('events');
 
-            $table->integer('liked_id')->unsigned();
-            $table->foreign('liked_id')->references('id')->on('users');
+            $table->timestamps();
 
 
         });
