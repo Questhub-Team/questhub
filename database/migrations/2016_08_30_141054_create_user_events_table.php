@@ -23,6 +23,7 @@ class CreateUserEventsTable extends Migration
 
             $table->integer('liked_id')->unsigned();
             $table->foreign('liked_id')->references('id')->on('users');
+            $table->timestamps();
 
 
         });
