@@ -5,8 +5,9 @@ namespace App\Console;
 use Illuminate\Console\Scheduling\Schedule;
 use Illuminate\Foundation\Console\Kernel as ConsoleKernel;
 use DMS\Service\Meetup\MeetupKeyAuthClient;
-use App\Models\Event;
-
+use App\Events;
+use App\Models\Interest;
+use App\EventInterests;
 class Kernel extends ConsoleKernel
 {
     /**
@@ -15,7 +16,7 @@ class Kernel extends ConsoleKernel
      * @var array
      */
     protected $commands = [
-        Commands\Inspire::class,
+    Commands\Inspire::class,
     ];
 
     /**
@@ -27,34 +28,40 @@ class Kernel extends ConsoleKernel
     protected function schedule(Schedule $schedule)
     {
         $schedule->command('inspire')
-                 ->hourly();
+        ->hourly();
 
         $schedule->call(function () {
             $client = MeetupKeyAuthClient::factory(array('key' => env('MEETUP_KEY', null)));
             $query = [
-                'topic' => 'python,html5,python,newintown,linux,robotics,javascript,film,beer,sci-fi,java,
-                investing,hacking,nightlife,',
-                'city' => 'San Antonio',
-                'country' => 'us',
-                'state' => 'tx'
-            
+            'topic' => 'python,html5,python,newintown,linux,robotics,javascript,film,beer,sci-fi,java,
+            investing,hacking,nightlife,',
+            'city' => 'San Antonio',
+            'country' => 'us',
+            'state' => 'tx',
+            'fields' => 'topics',
             ];
-            $response = $client->GetOpenEvents(
-                $query
-                );
-            Event::unguard();
+            $response = $client->GetOpenEvents($query);
+
+            Events::unguard();
             foreach ($response as $item) {
-                $event = Event::firstOrCreate([
+                $event = Events::firstOrCreate([
                     'api_event_id' => $item['id']
-                ]);
+                    ]);
                 $event->name = $item['name'];
                 $event->location = (isset($item['venue'])) ? implode($item['venue'], ' ') : null;
                 $event->description = (isset($item['description'])) ? $item['description'] : null;
                 $event->save();
-            }
-            Event::reguard();
 
-        })->everyMinute();
+                foreach ($item['group']['topics'] as $topic) {
+                $interest = Interest::findByName($topic['name']);
+                if ($interest){
+                $eventInterest = EventInterests::firstOrCreate(['event_id' => $event->id, 'interest_id' => $interest->id]);}
+            } 
+
+            }
+            Events::reguard();
+
+    })->everyMinute();
 
     }
 }
