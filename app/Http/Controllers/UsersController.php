@@ -39,6 +39,7 @@ class UsersController extends Controller
         $user->password = Hash::make($request->input('password'));
         $user->save();
 
+
         foreach ($request->input('value') as $interest_id)
         {
             $user_interests = new UserInterests();
@@ -47,7 +48,14 @@ class UsersController extends Controller
             $user_interests->save();
         }
 
-        return redirect()->action('AppController@index');
+        $userdata = array(
+            'username' => $user->username,
+            'password' => $user->password
+        );
+
+        if ( Auth::attempt($userdata) ) {
+                return redirect()->action('UsersController@show');
+            }
 
     }
     /**
@@ -58,18 +66,7 @@ class UsersController extends Controller
      */
     public function show(Request $resquest, $id)
     {
-        $client = MeetupKeyAuthClient::factory(array('key' => env('MEETUP_KEY')));
-        $query = [
-            'topic' => 'newtech',
-            'country' => 'us',
-            'state' => 'tx',
-            'city' => 'san antonio'
-        ];
         
-        $response = $client->getGroups(
-            $query
-        );
-
         $user = User::findOrFail($id);
         $data = compact('user', 'response');
         return view('users.user')->with($data);
