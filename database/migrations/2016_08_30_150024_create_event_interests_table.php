@@ -21,6 +21,8 @@ class CreateEventInterestsTable extends Migration
            $table->integer('interest_id')->unsigned();
            $table->foreign('interest_id')->references('id')->on('interests');
 
+           $table->timestamps();
+
         });
     }
 
