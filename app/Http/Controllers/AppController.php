@@ -8,6 +8,7 @@ use App\Http\Requests;
 use App\Http\Controllers\Controller;
 use Illuminate\Session\Middleware;
 use DB;
+use App\Models\Event;
 
 class AppController extends Controller
 {
@@ -56,13 +57,10 @@ class AppController extends Controller
      */
     public function store(Request $request)
     {
-        // $events = new Events();
-        // $events->name = 
-        // $events->location = 
-        // $events->description = 
-        // $events->price = 
-        // $events->date = 
-
+        $events = new \App\Models\UserEvents();
+        $events->user_id = $request->input('user_id');
+        $events->event_id = $request->input('event_id');
+        $events->save();
     }
 
     /**

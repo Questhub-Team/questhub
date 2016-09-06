@@ -21,11 +21,8 @@
 						<p>{{ (isset($responseItem->description)) ? strip_tags($responseItem->description) : '' }}</p>
 					<form method="POST" action="{{ action('AppController@store') }}">
 						{{ csrf_field() }}
-						<input type='hidden' name='name' value="">
-						<input type='hidden' name='interest_id' value="">
-						<input type='hidden' name='price' value="">
-						<input type='hidden' name='date' value="">
-						<input type='hidden' name='city' value="">
+						<input type='hidden' name='user_id' value="{{ Auth::user()->id }}">
+						<input type='hidden' name='event_id' value="{{ $responseItem->id }}">
 						<button type='submit' class='btn btn-default'>Like</button>
 					</form>
 					<form method="POST" action="#">
