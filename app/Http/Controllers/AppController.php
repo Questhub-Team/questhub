@@ -57,10 +57,15 @@ class AppController extends Controller
      */
     public function store(Request $request)
     {
-        $events = new \App\Models\UserEvents();
-        $events->user_id = $request->input('user_id');
-        $events->event_id = $request->input('event_id');
-        $events->save();
+        $event = \App\Models\UserEvents::firstOrCreate([
+            'user_id' => $request->input('user_id'),
+            'event_id' => $request->input('event_id')
+            ]);
+        $event->user_id = $request->input('user_id');
+        $event->event_id = $request->input('event_id');
+        $event->save();
+
+        return redirect()->action('AppController@showAll');
     }
 
     /**
