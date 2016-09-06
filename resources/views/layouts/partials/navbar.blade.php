@@ -13,12 +13,12 @@
 
 	<!-- Collect the nav links, forms, and other content for toggling -->
 	<div class="collapse navbar-collapse" id="navbar-collapse">
-		<form method="POST" class="navbar-form navbar-right" action="{{ 'AppController@search' }}">
+		<form method="GET" class="navbar-form navbar-right" action="{{ action('AppController@show') }}">
 			{{ csrf_field() }}
 			<div class="form-group">
-				<input name="search" type="text" class="form-control" placeholder="Search">
+				<input name="search" value="{{ isset($search) ? $search : '' }}" type="text" class="form-control" placeholder="Search">
 			</div>
-			<button type="submit" class="btn btn-default">Search</button>
+			<button type="submit" class="btn btn-default"><i class="fa fa-search">Search</i></button>
 		</form>
 		<ul class="nav navbar-nav navbar-right">
 			@if(Auth::check())

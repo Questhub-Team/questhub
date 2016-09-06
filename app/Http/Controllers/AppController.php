@@ -71,8 +71,9 @@ class AppController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show($id, $searchResult)
+    public function show(Request $request)
     {
+        $search = $request->input('search');
         $searchResult = DB::table('events')->select('name', 'description', 'location')
         ->where('name', 'LIKE', "%{$search}%")
         ->where('description', 'LIKE', "%{$search}%")
@@ -121,15 +122,5 @@ class AppController extends Controller
     public function destroy($id)
     {
         //
-    }
-    public function search(Post $post, Request $request)
-    {
-        $search = $request->input('search');
-
-        if ($search) {
-            $results = Post::searchPosts($search);
-            $data = compact('results');
-        }
-        return redirect()->action('AppController@show')->with($data);
     }
 }
