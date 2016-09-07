@@ -32,7 +32,7 @@
     color: red;
 }
 </style>
-<form class="form-horizontal" role="form" method="POST" action="{{ action('UsersController@store') }}">
+<form class="form-horizontal" role="form" method="POST" enctype="mutlipart/form-data" action="{{ action('UsersController@store') }}">
     <input type="hidden" name="_token" value="{{ csrf_token() }}">
 
     <div class="form-group">
@@ -67,6 +67,12 @@
         <label class="col-md-4 control-label">Confirm Password</label>
         <div class="col-md-6">
             <input type="password" class="form-control" name="password_confirmation">
+        </div>
+    </div>
+    <div class="form-group">
+        <label class="col-md-4 control-label" for="fileToUpload">Select profile image:</label>
+        <div class="col-md-6">
+            <input type="file" name="fileToUpload" class="form-control" id="fileToUpload">
         </div>
     </div>
     <div class='container-fluid interest-buttons center-block'>
