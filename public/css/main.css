@@ -11,6 +11,26 @@
 	width: 250px;
 	overflow-y: auto;
 }
+
+#logo {
+	display: block;
+}
+
+.navbar-brand {
+	padding-top: 1px;
+}
+
+body {
+	background-color: #f8f8f8;
+}
+
+.navbar,
+.navbar-default,
+.navbar-collapse,
+.navbar-default,
+.navbar-form  {
+	border-color: #f8f8f8;
+
 .scroll {
 	/*background-image: url('/img/scroll.jpg');
 	background-repeat: no-repeat;
