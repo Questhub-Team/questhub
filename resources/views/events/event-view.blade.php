@@ -1,6 +1,5 @@
 @extends('layouts.master')
 @section('content')
-
 	<div>
 		<h1>Event Page</h1>
 				<div class="col-md-4 events">

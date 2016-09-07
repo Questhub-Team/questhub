@@ -1,4 +1,5 @@
 
+
 function geodata() {
 var x = document.getElementById("locate");
 function getLocation() {
@@ -14,3 +15,4 @@ function showPosition(position) {
 }
 console.log(x)
 }
+
