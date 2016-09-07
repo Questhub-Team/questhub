@@ -42,8 +42,8 @@
 								id="login-password"
 								placeholder="Password">
 						</div>
-							<button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
 							<button type="submit" class="btn btn-primary"><span class="glyphicon glyphicon-log-in"></span> Login</button>
+							<button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
 					</form>
 				</div>
 			</div>
