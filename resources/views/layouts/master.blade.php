@@ -19,7 +19,7 @@
 	<![endif]-->
 </head>
 <body>
-	<div class="container">
+	<div class="container scroll">
 		@include('layouts.partials.navbar')
 
 		@yield('content')
@@ -36,24 +36,6 @@
 			data: data
 		}).done(callback);
 		}
-		$(document).ready(function() {
-			$('.vote').on('click', function() {
-				var data = {
-					_token: $('#csrf-token').val(),
-					vote: $(this).data('vote'),
-					post_id: $(this).data('postId')
-				};
-				var url = $('#vote-url').val();
-
-				var callback = function(data) {
-					console.log(data.vote_score);
-					$('#vote-score').text(data.vote_score);
-					$('.votes').removeClass('active');
-					$('[data-vote="' + data.vote + '"]').addClass('active');
-				}
-
-				doAjax(url, "POST", data, callback);
-		})
 	})
 	</script>
 </body>
