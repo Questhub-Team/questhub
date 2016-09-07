@@ -15,17 +15,7 @@ class ProfileController extends Controller
     /**
     * Displays correct profule based on user
     */
-    public function getProfile()
-    {
-      return View::make('user');
-    }
-    public function index()
-    {
-      $user = Auth::user();
-
-      return view('users.user', ['user' => $user]);
-    }
-
+    // 
     public function updateAccount(Request $request)
     {
       $id = Auth::user()->id;
