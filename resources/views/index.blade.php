@@ -12,7 +12,6 @@
 		<div class="col-md-4">
 			<h4>{{ $responseItem['name'] }}</a></h4>
 			{{ (isset($responseItem['description'])) ? strip_tags($responseItem['description']) : '' }}
-			{{ $responseItem['id'] }}
 		</div>
 			<?php $i++ ?>
 			<?php if ($i==3) { ?>
@@ -49,6 +48,10 @@
 			</div>
 		</div>
 	</div>
-	<a href="{{ action('Auth\AuthController@getRegister')}}" class="btn btn-primary btn-lg">Register</a>
 </div>
+	<div class="container-fluid register-btn">
+		<a href="{{ action('Auth\AuthController@getRegister')}}" class="btn btn-primary btn-lg display-block" id="register">
+			<span class="display-block text-center register-text">Register</span>
+		</a>
+	</div>
 @stop
