@@ -18,7 +18,7 @@
 			<div class="form-group">
 				<input name="search" value="{{ isset($search) ? $search : '' }}" type="text" class="form-control" placeholder="Search">
 			</div>
-			<button type="submit" class="btn btn-default"><i class="fa fa-search">Search</i></button>
+			<button type="submit" class="btn btn-default"><span class="glyphicon glyphicon-search"></span><i class="fa fa-search"> Search</i></button>
 		</form>
 		<ul class="nav navbar-nav navbar-right">
 			@if(Auth::check())
