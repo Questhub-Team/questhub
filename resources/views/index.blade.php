@@ -10,7 +10,7 @@
 	<?php $i=0 ?>
 	@foreach ($response as $responseItem)
 		<div class="col-md-4">
-			<h4><a href="{{ $responseItem['link'] }}" target="_BLANK">{{ $responseItem['name'] }}</a></h4>
+			<h4>{{ $responseItem['name'] }}</a></h4>
 			{{ (isset($responseItem['description'])) ? strip_tags($responseItem['description']) : '' }}
 			{{ $responseItem['id'] }}
 		</div>
