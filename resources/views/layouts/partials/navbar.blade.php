@@ -22,9 +22,9 @@
 		</form>
 		<ul class="nav navbar-nav navbar-right">
 			@if(Auth::check())
-			<li><a href="{{ action('UsersController@show', Auth::id()) }}" class="glyphicon glyphicon-user"> Profile<span class="sr-only">(current)</span></a></li>
-			<li><a href="{{ action('Auth\AuthController@getLogout') }}" class="glyphicon glyphicon-remove-circle"> Logout</a></li>
-			<li><a href="{{ action('AppController@showAll')}}" class="glyphicon glyphicon-menu-hamburger"> Events</a></li>
+			<li><a href="{{ action('UsersController@show', Auth::id()) }}" class=""><span class="glyphicon glyphicon-user"></span> Profile</a></li>
+			<li><a href="{{ action('Auth\AuthController@getLogout') }}" class=""><span class="glyphicon glyphicon-remove-circle"></span> Logout</a></li>
+			<li><a href="{{ action('AppController@showAll')}}"><span class="glyphicon glyphicon-menu-hamburger"></span> Events</a></li>
 			@else
 				<button type="button" class="btn btn-default btn-sm form-control navbar-form" data-toggle="modal" data-target="#login-modal">Login</button>
 			@endif
