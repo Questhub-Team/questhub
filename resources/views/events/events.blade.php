@@ -1,17 +1,10 @@
 @extends('layouts.master')
 @section('content')
-<style type="text/css">
-	.events {
-		height: 400px;
-		width: 250px;
-		overflow-y: auto;
-	}
-</style>
 	<div>
 		<h1>Events</h1>
 			@foreach ($response as $responseItem)
 				<div class="col-md-4 events">
-					<h4><a href="{{ (isset($responseItem->event_url)) ? $responseItem->event_url : '' }}" target="_BLANK">
+					<h4><a href="{{ action('AppController@showOne', $responseItem->id) }}" target="_BLANK">
 						Name: {{ $responseItem->name }}</a></h4>
 
 						<p>Location: {{ (isset($responseItem->venue)) ? implode($responseItem->venue, ' ') : '' }}</p>

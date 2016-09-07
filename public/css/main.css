@@ -5,3 +5,9 @@
 #edit-profile-form {
 	margin-bottom: 20px;
 }
+
+.events {
+	height: 400px;
+	width: 250px;
+	overflow-y: auto;
+}
