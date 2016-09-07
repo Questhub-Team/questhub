@@ -18,6 +18,8 @@ class CreateEventsTable extends Migration
             $table->text('location')->nullable();
             $table->text('description')->nullable();
             $table->string('api_event_id')->unique()->nullable();
+            $table->string('lat')->nullable();
+            $table->string('lon')->nullable();
             $table->timestamps();
 
         });
