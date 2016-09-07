@@ -11,11 +11,6 @@
 			<br>
 			<td>Email: {{$user->email}}</td>
 		</tr>
-		<form  method="POST" action="" enctype="multipart/form-data">
-			<label for="upload">Select image to upload:</label>
-			<input type="file" name="upload" id="upload">
-			<button class="btn btn-primary" type="submit">Upload Image</button>
-		</form>
 		<button type="button" class="btn btn-primary" data-toggle="modal" data-target="#edit-modal">Edit profile</button>
 	</div>
 
