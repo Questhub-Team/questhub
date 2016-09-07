@@ -58,7 +58,7 @@ class EventsController extends Controller
         $event->event_id = $request->input('event_id');
         $event->save();
 
-        return redirect()->action('AppController@showAll');
+        return redirect()->action('EventsController@showAll');
     }
 
     /**
