@@ -16,7 +16,7 @@
 						<p>Location: {{ (isset($responseItem->venue)) ? implode($responseItem->venue, ' ') : '' }}</p>
 
 						<p>{{ (isset($responseItem->description)) ? strip_tags($responseItem->description) : '' }}</p>
-					<form method="POST" action="{{ action('AppController@store') }}">
+					<form method="POST" action="{{ action('EventsController@store') }}">
 						{{ csrf_field() }}
 						<input type='hidden' name='user_id' value="{{ Auth::user()->id }}">
 						<input type='hidden' name='event_id' value="{{ $responseItem->id }}">
