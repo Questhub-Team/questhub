@@ -11,3 +11,8 @@
 	width: 250px;
 	overflow-y: auto;
 }
+.scroll {
+	/*background-image: url('/img/scroll.jpg');
+	background-repeat: no-repeat;
+	background-size: 100%, 100%; */
+}
