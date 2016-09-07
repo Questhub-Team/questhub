@@ -1,10 +1,11 @@
 @extends('layouts.master')
 @section('content')
+
 	<div>
-		<h1>Events</h1>
+		<h1>Event Page</h1>
 				<div class="col-md-4 events">
 					<h4><a href="{{ action('AppController@showOne', $response->id) }}" target="_BLANK">
-						Name: {{ $response->name }}</a></h4>
+						{{ $response->name }}</a></h4>
 
 						<p>Location: {{ (isset($response->venue)) ? implode($response->venue, ' ') : '' }}</p>
 
@@ -17,8 +18,11 @@
 					</form>
 					<form>
 						<input type="hidden" name="check-in" value="1">
-						<button type="submit" class="btn btn-success"><span class="glyphicon glyphicon-check"></span> Quest Check-In</button>
+						<button onclick="geodata()" type="submit" class="btn btn-success"><span class="glyphicon glyphicon-check"></span> Quest Check-In</button>
 					</form>
 				</div> 
 	</div>
+@stop
+@section('script')
+<script src="/js/locationservice.js" type="text/javascript"></script>
 @stop
