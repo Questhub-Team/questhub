@@ -30,13 +30,22 @@
 	<!-- Latest compiled and minified JavaScript -->
 	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
 	<script>
-		function doAjax(url, method, data, callback) {
-		$.ajax(url, {
-			type: method,
-			data: data
-		}).done(callback);
-		}
-	})
+		document.getElementById("locate").addEventListener('click', geodata);
+			function geodata() {
+				var x = document.getElementById("locate");
+				function getLocation() {
+				    if (navigator.geolocation) {
+				        navigator.geolocation.getCurrentPosition(showPosition);
+				    } else {
+				        x.innerHTML = "Geolocation is not supported by this browser.";
+				    }
+				}
+				function showPosition(position) {
+				    x.innerHTML = "Latitude: " + position.coords.latitude + 
+				    "<br>Longitude: " + position.coords.longitude;
+				}
+				console.log(x);
+			}
 	</script>
 	@yield('scripts')
 </body>
