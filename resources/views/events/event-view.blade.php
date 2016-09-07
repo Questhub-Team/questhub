@@ -6,7 +6,7 @@
 					<h4><a href="{{ action('EventsController@showOne', $event->id) }}" target="_BLANK">
 						{{ $event->name }}</a></h4>
 
-						<p>Location: {{ (isset($event->venue)) ? implode($event->venue, ' ') : '' }}</p>
+						<p>Location: {{ (isset($event->location)) ? $event->location : '' }}</p>
 
 						<p>{{ (isset($event->description)) ? strip_tags($event->description) : '' }}</p>
 					<form method="POST" action="{{ action('EventsController@store') }}">

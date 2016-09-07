@@ -58,7 +58,7 @@ class EventsController extends Controller
         $event->event_id = $request->input('event_id');
         $event->save();
 
-        return redirect()->action('AppController@showAll');
+        return redirect()->action('EventsController@showAll');
     }
 
     /**
@@ -73,15 +73,13 @@ class EventsController extends Controller
         $searchResult = DB::table('events')->select('id', 'name', 'description', 'location')
         ->where('name', 'LIKE', "%{$search}%")
         ->orWhere('description', 'LIKE', "%{$search}%")
-        ->orWhere('location', 'LIKE', "%{$search}%")->get();
-        // dd($searchResult);
+        ->orWhere('location', 'LIKE', "%{$search}%")->paginate(20);
         $data = compact('searchResult');
         return view('events.searchresults')->with($data);
     }
     public function showAll()
-    {
-        
-        $response = DB::select('SELECT * FROM events');
+    {        
+        $response = Events::paginate(20);
         // dd($response);
         $data = compact('response');
         return view('events.events')->with($data); 
