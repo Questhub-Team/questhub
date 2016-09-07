@@ -39,7 +39,8 @@ class Kernel extends ConsoleKernel
                 'city' => 'San Antonio',
                 'country' => 'us',
                 'state' => 'tx',
-                'fields' => 'topics',
+                'fields' => 'topics,lat,lon' 
+
             ];
             $response = $client->GetOpenEvents($query);
 
@@ -48,6 +49,8 @@ class Kernel extends ConsoleKernel
                 $event = Events::firstOrCreate([
                     'api_event_id' => $item['id']
                     ]);
+                $event->lat = (isset($item['venue']['lat'])) ?$item['venue']['lat']:null;
+                $event->lon = (isset($item['venue']['lon'])) ?$item['venue']['lon']:null;
                 $event->name = $item['name'];
                 $event->location = (isset($item['venue'])) ? implode($item['venue'], ' ') : null;
                 $event->description = (isset($item['description'])) ? $item['description'] : null;
