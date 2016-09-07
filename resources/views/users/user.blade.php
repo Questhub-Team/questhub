@@ -1,7 +1,7 @@
 @extends('layouts.master')
 @section('content')
-<div>
-	<div>
+<div class="row">
+	<div class="col-md-6">
 		<h1>User Info</h1>
 
 		<tr>
@@ -11,9 +11,8 @@
 			<br>
 			<td>Email: {{$user->email}}</td>
 		</tr>
-
+		<button type="button" class="btn btn-primary" data-toggle="modal" data-target="#edit-modal">Edit profile</button>
 	</div>
-	<button type="button" class="btn btn-primary" data-toggle="modal" data-target="#edit-modal">Edit profile</button>
 
 	<div class="modal fade" id="edit-modal" tabindex="-1" role="dialog" aria-labelledby="edit profile">
 		<div class="modal-dialog modal-lg" role="document">
@@ -48,16 +47,18 @@
 			</div>
 		</div>
 	</div>
+	<div class="col-md-6">
+		<h2>Interests</h2>
+		@foreach ($user->interests as $interest)
+		<form method = 'post' action="{{ action('UsersController@destroy', $interest->id) }}">
+		<input type="hidden" name="_method" value="DELETE">
+			{{ csrf_field() }}
+				<button type="submit" class="btn btn-danger">{{ $interest->name }}</button>
+		</form>
+		@endforeach
+	</div>
 </div>
-<h2>Interests</h2>
-@foreach ($user->interests as $interest)
-<form method = 'post' action="{{ action('UsersController@destroy', $interest->id) }}">
-<input type="hidden" name="_method" value="DELETE">
-	{{ csrf_field() }}
-		<button type="submit" class="btn btn-danger">{{ $interest->name }}</button>
-</form>
-@endforeach
-<br>
+
 <button class='btn btn-success' data-toggle="modal" data-target="#interest-modal">Add Interests</button>
 <div class="modal fade" id="interest-modal" tabindex="-1" role="dialog" aria-labelledby="edit interests">
 	<div class="modal-dialog modal-lg" role="document">
