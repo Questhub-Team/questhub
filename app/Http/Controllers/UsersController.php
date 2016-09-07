@@ -15,6 +15,10 @@ use DB;
 
 class UsersController extends Controller
     {
+    public function __construct()
+    {
+        $this->middleware('auth', ['except' => ['store']]);
+    }
     /**
      * Show the form for creating a new resource.
      *
@@ -32,7 +36,6 @@ class UsersController extends Controller
      */
     public function store(Request $request)
     {
-
         $user = new User();
         $user->username = $request->input('username');
         $user->name = $request->input('name');
@@ -41,7 +44,7 @@ class UsersController extends Controller
         $user->save();
 
 
-        foreach ($request->input('value') as $interest_id)
+        foreach ($request->input('value', []) as $interest_id)
         {
             $user_interests = new UserInterests();
             $user_interests->interest_id = $interest_id;
@@ -51,12 +54,13 @@ class UsersController extends Controller
 
         $userdata = array(
             'username' => $user->username,
-            'password' => $user->password
+            'password' => $user->password,
+            'id' => $user->id
         );
 
-        if ( Auth::attempt($userdata) ) {
-                return redirect()->action('UsersController@show');
-            }
+        Auth::loginUsingId($user->id);
+
+        return redirect()->action('UsersController@show', $user->id);
 
     }
     /**
@@ -98,7 +102,13 @@ class UsersController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+            $id = Auth::user()->id;
+            $user = Auth::user();
+            $user->username = $request->input('username');
+            $user->name = $request->input('name');
+            $user->email = $request->input('email');
+            $user->save();
+            return redirect()->action('UsersController@show', $id);
     }
     /**
      * Remove the specified resource from storage.
@@ -106,35 +116,26 @@ class UsersController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function updateAccount(Request $request)
-        {
-            $id = Auth::user()->id;
-            $user = Auth::user();
-            $user->username = $request->input('username');
-            $user->name = $request->input('name');
-            $user->email = $request->input('email');
-            $user->save();
-            return redirect()->action('UsersController@show');
-        }
-
-        public function updateInterests(Request $request){
+    public function updateInterests(Request $request)
+    {
             UserInterests::unguard();
             foreach ($request->input('value') as $interest_id)
             {
-                $user_interests = UserInterests::firstOrCreate([
-                        'interest_id' => $interest_id,
-                        'user_id' => $request->user()->id
+                $user_interest = UserInterests::firstOrCreate([
+                    'interest_id' => $interest_id,
+                    'user_id' => $request->user()->id
                 ]);
             }
             UserInterests::reguard();
 
-            return redirect()->action('UsersController@show');
-        }
-        public function destroy(Request $request, $id)
+            return redirect()->action('UsersController@show', $user_interest->user_id);
+    }
+
+    public function destroy(Request $request, $id)
     {
         $user_interest = \App\Models\UserInterests::where('interest_id', $id)->first();
         $user_interest->delete();
         $request->session()->flash('message', 'Interest has been deleted');
-        return redirect()->action('UsersController@show');
+        return redirect()->action('UsersController@show', $user_interest->user_id);
     }
 }

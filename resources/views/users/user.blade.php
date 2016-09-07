@@ -21,11 +21,11 @@
 				<div class="container-fluid">
 					<h2>Edit Profile for {{ $user->name }}</h2>
 
-					<form method="POST" action="{{ action('UsersController@updateAccount') }}" id="edit-profile-form">
+					<form method="POST" action="{{ action('UsersController@update') }}" id="edit-profile-form">
 						<input type="hidden" name="_method" value="PUT">
 						{{ csrf_field() }}
 
-						<div class="form-group" action="/users/user">
+						<div class="form-group">
 							<label for="name">Name</label>
 							<input type="text" class="form-control" id="name" name="name" value="{{ $user->name }}" placeholder="Name">
 						</div>
@@ -55,10 +55,10 @@
 </div>
 <h2>Interests</h2>
 @foreach ($user->interests as $interest)
-<form method = 'post' action="{{ action('UsersController@destroy', $interest->id)}}">
+<form method = 'post' action="{{ action('UsersController@destroy', $interest->id) }}">
 <input type="hidden" name="_method" value="DELETE">
 	{{ csrf_field() }}
-		<button type="submit" class="btn btn-danger">{{ $interest->name }} </button>
+		<button type="submit" class="btn btn-danger">{{ $interest->name }}</button>
 </form>
 @endforeach
 <br>
