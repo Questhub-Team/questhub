@@ -48,10 +48,6 @@
 			</div>
 		</div>
 	</div>
-	<form>
-		<input type="hidden" name="check-in" value="1">
-		<button type="submit" class="btn btn-success"><span class="glyphicon glyphicon-check"></span> Quest Check-In</button>
-	</form>
 </div>
 <h2>Interests</h2>
 @foreach ($user->interests as $interest)

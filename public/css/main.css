@@ -30,4 +30,9 @@ body {
 .navbar-default,
 .navbar-form  {
 	border-color: #f8f8f8;
+
+.scroll {
+	/*background-image: url('/img/scroll.jpg');
+	background-repeat: no-repeat;
+	background-size: 100%, 100%; */
 }

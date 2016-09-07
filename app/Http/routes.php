@@ -10,8 +10,9 @@
 | and give it the controller to call when that URI is requested.
 |
 */
-Route::resource('/', 'AppController');
+Route::get('/one-event/{id}', 'AppController@showOne');
 Route::get('/all-events', 'AppController@showAll');
+Route::resource('/', 'AppController');
 
 Route::put('/users/interests', 'UsersController@updateInterests');
 Route::resource('users', 'UsersController');

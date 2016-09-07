@@ -19,7 +19,7 @@
 	<![endif]-->
 </head>
 <body>
-	<div class="container">
+	<div class="container scroll">
 		@include('layouts.partials.navbar')
 
 		@yield('content')
@@ -30,31 +30,23 @@
 	<!-- Latest compiled and minified JavaScript -->
 	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
 	<script>
-		function doAjax(url, method, data, callback) {
-		$.ajax(url, {
-			type: method,
-			data: data
-		}).done(callback);
-		}
-		$(document).ready(function() {
-			$('.vote').on('click', function() {
-				var data = {
-					_token: $('#csrf-token').val(),
-					vote: $(this).data('vote'),
-					post_id: $(this).data('postId')
-				};
-				var url = $('#vote-url').val();
-
-				var callback = function(data) {
-					console.log(data.vote_score);
-					$('#vote-score').text(data.vote_score);
-					$('.votes').removeClass('active');
-					$('[data-vote="' + data.vote + '"]').addClass('active');
+		document.getElementById("locate").addEventListener('click', geodata);
+			function geodata() {
+				var x = document.getElementById("locate");
+				function getLocation() {
+				    if (navigator.geolocation) {
+				        navigator.geolocation.getCurrentPosition(showPosition);
+				    } else {
+				        x.innerHTML = "Geolocation is not supported by this browser.";
+				    }
 				}
-
-				doAjax(url, "POST", data, callback);
-		})
-	})
+				function showPosition(position) {
+				    x.innerHTML = "Latitude: " + position.coords.latitude + 
+				    "<br>Longitude: " + position.coords.longitude;
+				}
+				console.log(x);
+			}
 	</script>
+	@yield('scripts')
 </body>
 </html>

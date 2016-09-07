@@ -1,8 +1,4 @@
 @extends('layouts.master')
 @section('content')
-	<div>
-		<h1>Event Name</h1>
-		<p>Event location</p>
-		<p>Event time</p>
-	</div>
+	<!-- need to add the view to display different events -->
 @stop

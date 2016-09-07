@@ -8,7 +8,7 @@ use App\Http\Requests;
 use App\Http\Controllers\Controller;
 use Illuminate\Session\Middleware;
 use DB;
-use App\Models\Event;
+use App\Events;
 
 class AppController extends Controller
 {
@@ -39,14 +39,7 @@ class AppController extends Controller
      */
     public function create()
     {
-        $client = MeetupKeyAuthClient::factory(array('key' => env('MEETUP_KEY', null)));
-        $topic = $client->getTopics(array('name' => 'Board Games'))->current();
-            
-        $interest = new \App\Models\Interest;
-        $interest->name = $topic['name'];
 
-
-        $interest->save();
     }
 
     /**
@@ -92,6 +85,12 @@ class AppController extends Controller
         // dd($response);
         $data = compact('response');
         return view('events.events')->with($data); 
+    }
+    public function showOne($id)
+    {
+        $response = Events::findOrFail($id);
+        $data = compact('response');
+        return view('events.event-view')->with($data);
     }
     /**
      * Show the form for editing the specified resource.
