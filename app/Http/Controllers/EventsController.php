@@ -10,7 +10,7 @@ use Illuminate\Session\Middleware;
 use DB;
 use App\Events;
 
-class AppController extends Controller
+class EventsController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -88,8 +88,8 @@ class AppController extends Controller
     }
     public function showOne($id)
     {
-        $response = Events::findOrFail($id);
-        $data = compact('response');
+        $event = Events::findOrFail($id);
+        $data = compact('event');
         return view('events.event-view')->with($data);
     }
     /**
