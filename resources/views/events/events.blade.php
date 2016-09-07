@@ -1,12 +1,5 @@
 @extends('layouts.master')
 @section('content')
-<style type="text/css">
-	.events {
-		height: 400px;
-		width: 250px;
-		overflow-y: auto;
-	}
-</style>
 	<div>
 		<h1>Events</h1>
 			@foreach ($response as $responseItem)
