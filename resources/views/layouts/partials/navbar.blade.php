@@ -18,13 +18,13 @@
 			<div class="form-group">
 				<input name="search" value="{{ isset($search) ? $search : '' }}" type="text" class="form-control" placeholder="Search">
 			</div>
-			<button type="submit" class="btn btn-default"><span class="glyphicon glyphicon-search"></span><i class="fa fa-search"> Search</i></button>
+			<button type="submit" class="btn btn-default"><span class="glyphicon glyphicon-search"></span>Search</button>
 		</form>
 		<ul class="nav navbar-nav navbar-right">
 			@if(Auth::check())
-			<li><a href="{{ action('UsersController@show', Auth::id()) }}" class="glyphicon glyphicon-user"> Profile<span class="sr-only">(current)</span></a></li>
-			<li><a href="{{ action('Auth\AuthController@getLogout') }}" class="glyphicon glyphicon-remove-circle"> Logout</a></li>
-			<li><a href="{{ action('EventsController@showAll')}}" class="glyphicon glyphicon-menu-hamburger"> Events</a></li>
+			<li><a href="{{ action('UsersController@show', Auth::id()) }}"><span class="glyphicon glyphicon-user"></span> Profile<span class="sr-only">(current)</span></a></li>
+			<li><a href="{{ action('Auth\AuthController@getLogout') }}"><span class="glyphicon glyphicon-remove-circle"></span> Logout</a></li>
+			<li><a href="{{ action('EventsController@showAll')}}"><span class="glyphicon glyphicon-menu-hamburger"></span> Events</a></li>
 			@else
 				<button type="button" class="btn btn-default btn-sm form-control navbar-form" data-toggle="modal" data-target="#login-modal">Login</button>
 			@endif
