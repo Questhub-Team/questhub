@@ -11,3 +11,11 @@
 	width: 250px;
 	overflow-y: auto;
 }
+
+#logo {
+	display: block;
+}
+
+.navbar-brand {
+	padding-top: 1px;
+}
