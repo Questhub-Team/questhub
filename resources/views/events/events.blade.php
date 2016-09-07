@@ -7,8 +7,6 @@
 					<h4><a href="{{ action('EventsController@showOne', $responseItem->id) }}" target="_BLANK">
 						Name: {{ $responseItem->name }}</a></h4>
 
-						<p>Location: {{ (isset($responseItem->venue)) ? implode($responseItem->venue, ' ') : '' }}</p>
-
 						<p>{{ (isset($responseItem->description)) ? strip_tags($responseItem->description) : '' }}</p>
 					<form method="POST" action="{{ action('EventsController@store') }}">
 						{{ csrf_field() }}
@@ -23,5 +21,6 @@
 					</form>
 				</div> 
 			@endforeach
+			<span colspan="7" class="text-center">{!! $response->render() !!}</span>
 	</div>
 @stop

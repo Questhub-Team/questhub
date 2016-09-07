@@ -29,5 +29,6 @@
 					</form>
 				</div> 
 			@endforeach
+			<span colspan="7" class="text-center">{!! $searchResult->render() !!}</span>
 	</div>
 @stop
