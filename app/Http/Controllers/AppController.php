@@ -77,7 +77,7 @@ class AppController extends Controller
     public function show(Request $request)
     {
         $search = $request->input('search');
-        $searchResult = DB::table('events')->select('name', 'description', 'location')
+        $searchResult = DB::table('events')->select('id', 'name', 'description', 'location')
         ->where('name', 'LIKE', "%{$search}%")
         ->orWhere('description', 'LIKE', "%{$search}%")
         ->orWhere('location', 'LIKE', "%{$search}%")->get();
