@@ -20,7 +20,7 @@
 	<![endif]-->
 </head>
 <body>
-	<div class="container scroll">
+	<div class="container-fluid scroll">
 		@include('layouts.partials.navbar')
 
 		@yield('content')
