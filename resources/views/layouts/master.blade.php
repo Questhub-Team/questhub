@@ -31,22 +31,14 @@
 	<!-- Latest compiled and minified JavaScript -->
 	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
 	<script>
-		document.getElementById("locate").addEventListener('click', geodata);
-			function geodata() {
-				var x = document.getElementById("locate");
-				function getLocation() {
-				    if (navigator.geolocation) {
-				        navigator.geolocation.getCurrentPosition(showPosition);
-				    } else {
-				        x.innerHTML = "Geolocation is not supported by this browser.";
-				    }
-				}
-				function showPosition(position) {
-				    x.innerHTML = "Latitude: " + position.coords.latitude + 
-				    "<br>Longitude: " + position.coords.longitude;
-				}
-				console.log(x);
-			}
+	(function(){
+		$( document ).ready(function() {
+			$('.remove').hover(
+	        	function(){ $(this).addClass('glyphicon glyphicon-remove') },
+	        	function(){ $(this).removeClass('glyphicon glyphicon-remove') 
+	        });
+		});	
+	})();
 	</script>
 	@yield('scripts')
 </body>

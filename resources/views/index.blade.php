@@ -5,7 +5,9 @@
 	<p class="text-center">
 		After you register on our website you can get information based on the interests you select about all the groups that meet in town.
 	</p>
-
+		<br>
+	<div class="bar"></div>
+		<br>
 			<h4 class="text-center fancy-header">Sample Groups</h4> 
 	<?php $i=0 ?>
 	@foreach ($response as $responseItem)
@@ -51,6 +53,9 @@
 		</div>
 	</div>
 </div>
+		<br>
+<div class="bar"></div>
+		<br>
 	<div class="container-fluid register-btn text-center">
 		<a href="{{ action('Auth\AuthController@getRegister')}}" class="btn btn-primary btn-lg display-block" id="register">
 			<span class="display-block text-center register-text">Register</span>

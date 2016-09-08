@@ -19,7 +19,7 @@
 <body>
 	<div>
 		<img src="/img/herebedragons.jpg" alt="Here be dragons.">
-		<h1>
+		<h1 class="fancy-header">
 			404<br>
 			<span id="small">Sorry, page cannot be found.</span>
 		</h1>
