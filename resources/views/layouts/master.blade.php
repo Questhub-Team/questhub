@@ -25,7 +25,7 @@
 			@include('layouts.partials.navbar')
 
 
-			<<<<<<< HEAD
+			
 			@yield('content')
 		</div>
 
