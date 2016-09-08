@@ -135,4 +135,15 @@ class EventsController extends Controller
         $request->session()->flash('message', 'Event has been ignored');
         return redirect()->action('UsersController@show', Auth::user()->id);
     }
+
+    public function compareDistance(Request $request)
+    {
+        $latitude = $request->input('latitude');
+        $longitude = $request->input('longitude');
+        $event = Events::findOrFail($request->input('event_id'));
+
+        $distance_between = $event->getDistance($latitude, $longitude);
+
+        return $distance_between;
+    }
 }

@@ -15,13 +15,10 @@
 						<input type='hidden' name='event_id' value="{{ $event->id }}">
 						<button type='submit' class='btn btn-default'>Like</button>
 					</form>
-					<form>
-						<input type="hidden" name="check-in" value="1">
-						<button id="locate" onclick="geodata()" type="submit" class="btn btn-success"><span class="glyphicon glyphicon-check"></span> Quest Check-In</button>
-					</form>
+					<button disabled id="locate" type="submit" data-event-id="{{ $event->id }}" class="btn btn-success check-in"><span class="glyphicon glyphicon-check"></span> Quest Check-In</button>
 				</div> 
+				<input type="hidden" name="check-in-url" id="check-in-url" value="{{ action('EventsController@compareDistance') }}">
 	</div>
 @stop
 @section('script')
-<script src="/js/locationservice.js" type="text/javascript"></script>
 @stop
