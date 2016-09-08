@@ -8,18 +8,20 @@
 		<br>
 	<div class="bar"></div>
 		<br>
-			<h4 class="text-center fancy-header">Sample Groups</h4> 
-	<?php $i=0 ?>
-	@foreach ($response as $responseItem)
-		<div class="col-md-4">
-			<h4>{{ $responseItem['name'] }}</a></h4>
-			{{ (isset($responseItem['description'])) ? strip_tags($responseItem['description']) : '' }}
-		</div>
-			<?php $i++ ?>
-			<?php if ($i==3) { ?>
-				<?php break; ?>
-			<?php } ?>
-	@endforeach
+			<h4 class="text-center fancy-header">Sample Groups</h4>
+			<div class="welcome"> 
+				<?php $i=0 ?>
+					@foreach ($response as $responseItem)
+						<div class="col-md-4">
+							<h4>{{ $responseItem['name'] }}</a></h4>
+							{{ (isset($responseItem['description'])) ? strip_tags($responseItem['description']) : '' }}
+						</div>
+							<?php $i++ ?>
+							<?php if ($i==3) { ?>
+								<?php break; ?>
+							<?php } ?>
+					@endforeach
+			</div>
 	<div class="modal fade" id="login-modal" tabindex="-1" role="dialog" aria-labelledby="login form">
 		<div class="modal-dialog modal-lg" role="document">
 			<div class="modal-content">
