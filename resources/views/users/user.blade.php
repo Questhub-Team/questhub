@@ -3,14 +3,16 @@
 <div class="row">
 	<div class="col-md-6">
 		<h1>User Info</h1>
-
-		<tr>
-			<td>Username: {{$user->username}}</td>
+		<div class="row">
+			<img src="/img/{{ $user->profile_img }}" class="profile-img display-block">
+		</div>
+		<div class="row">
+			<span class="fancy-header text-center display-block">Username: {{$user->username}}</span>
 			<br>
-			<td>Name: {{$user->name}}</td>
+			<span class="fancy-header text-center display-block">Name: {{$user->name}}</span>
 			<br>
-			<td>Email: {{$user->email}}</td>
-		</tr>
+			<span class="fancy-header text-center display-block">Email: {{$user->email}}</span>	
+		</div>
 		<button type="button" class="btn btn-primary" data-toggle="modal" data-target="#edit-modal">Edit profile</button>
 	</div>
 
