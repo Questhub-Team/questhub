@@ -41,5 +41,38 @@
 	})();
 	</script>
 	@yield('scripts')
+	<script>
+	var latitude = null;
+	var longitude = null;
+	navigator.geolocation.getCurrentPosition(function(position) {
+		latitude = position.coords.latitude;
+		longitude = position.coords.longitude;
+  		console.log(position.coords.latitude, position.coords.longitude);
+  		$('.check-in').attr('disabled', false);
+	});
+	$('.check-in').click(function() {
+		console.log(latitude, longitude);
+		var event_id = $(this).data('event-id');
+		var check_in_url = $('#check-in-url').val();
+		$.ajax({
+	        type: 'GET',
+	        url: check_in_url,
+	        data: {
+	        	latitude: latitude,
+	        	longitude: longitude,
+	        	event_id: event_id,
+	        	
+	        }
+	    }).done(function(data) {
+	    	if(data <= 2){
+	    		alert("Check-in completed!");
+	    	} else {
+	    		alert("Check-in is too far away!");
+	    	}
+	    	console.log(data);
+	    	// do something with the distance
+	    })
+	});
+</script>
 </body>
 </html>

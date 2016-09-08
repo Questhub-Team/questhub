@@ -12,6 +12,7 @@
 */
 Route::get('/one-event/{id}', 'EventsController@showOne');
 Route::get('/all-events', 'EventsController@showAll');
+Route::get('/ajax/events/get-distance', 'EventsController@compareDistance');
 Route::resource('/', 'EventsController');
 
 Route::put('/users/interests', 'UsersController@updateInterests');

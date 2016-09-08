@@ -123,4 +123,15 @@ class EventsController extends Controller
     {
         //
     }
+
+    public function compareDistance(Request $request)
+    {
+        $latitude = $request->input('latitude');
+        $longitude = $request->input('longitude');
+        $event = Events::findOrFail($request->input('event_id'));
+
+        $distance_between = $event->getDistance($latitude, $longitude);
+
+        return $distance_between;
+    }
 }
