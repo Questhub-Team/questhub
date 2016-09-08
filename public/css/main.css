@@ -88,3 +88,7 @@ body {
 .glyphicon-ok {
     color: red;
 }
+.sample-groups {
+	/*background-image: url('/img/parchment.jpg');*/
+	background-color: red;
+}
