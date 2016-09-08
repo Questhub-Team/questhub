@@ -24,7 +24,8 @@
 			@if(Auth::check())
 				<li><a href="{{ action('UsersController@show', Auth::id()) }}"><span class="glyphicon glyphicon-user"> Profile</span></a></li>
 				<li><a href="{{ action('Auth\AuthController@getLogout') }}"><span class="glyphicon glyphicon-remove-circle"> Logout</span></a></li>
-				<li><a href="{{ action('EventsController@showAll')}}"><span class="glyphicon glyphicon-menu-hamburger"> Events</span></a></li>
+				<li><a href="{{ action('EventsController@showAll')}}"><span class="glyphicon glyphicon-menu-hamburger"> All Events</span></a></li>
+				<li><a href="{{ action('EventsController@userEvents')}}"><span class="glyphicon glyphicon-menu-hamburger"> My Events</span></a></li>
 			@else
 				<li><a href="#" data-toggle="modal" data-target="#login-modal"><span class="glyphicon glyphicon-log-in"> Login</span></a></li>
 			@endif
