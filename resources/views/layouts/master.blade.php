@@ -24,7 +24,7 @@
 		<div class="container-fluid scroll">
 			@include('layouts.partials.navbar')
 			@yield('content')
-			<div>
+		</div>
 
 
 	<!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
