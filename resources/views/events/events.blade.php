@@ -1,6 +1,6 @@
 @extends('layouts.master')
 @section('content')
-	<div>
+	<div class="row">
 		<h1>Events</h1>
 			@foreach ($response as $responseItem)
 				<div class="col-md-4 events">
@@ -21,6 +21,6 @@
 					</form>
 				</div> 
 			@endforeach
-			<span colspan="7" class="text-center">{!! $response->render() !!}</span>
 	</div>
+	<div class="pagination center-block" id="event-pagination">{!! $response->render() !!}</div>
 @stop
