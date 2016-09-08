@@ -185,7 +185,12 @@
 				<p>Location: {{ (isset($userEvent->location)) ? $userEvent->location : '' }}</p>
 
 				<p>{{ (isset($userEvent->description)) ? strip_tags($userEvent->description) : '' }}</p>
-		</div> 
+			<form method="POST" action="{{ action('EventsController@destroy', $userEvent->id) }}">
+				<input type="hidden" name="_method" value="DELETE">
+				{{ csrf_field() }}
+				<button type='submit' class='btn btn-default'>Ignore</button>
+			</form> 
+		</div>
 	@endforeach
 </div>
 
