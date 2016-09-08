@@ -21,7 +21,7 @@ class EventsController extends Controller
     {
         $client = MeetupKeyAuthClient::factory(array('key' => env('MEETUP_KEY', null)));
         $query = [
-            'topic' => 'newtech',
+            'topic' => 'linux',
             'zip' => '78247',
             'country' => 'us',
             'state' => 'tx',
@@ -77,6 +77,13 @@ class EventsController extends Controller
         $data = compact('searchResult');
         return view('events.searchresults')->with($data);
     }
+    // public function userEvents(Request $request)
+    // {
+    //     $events = DB::table('events')->select('id', 'name', 'description', 'location')
+    //     ->where('name', 'LIKE', "%{$search}%")
+    //     $data = compact('events');
+    //     return view('events.userevents')->with($data);
+    // }
     public function showAll()
     {        
         $response = Events::paginate(20);

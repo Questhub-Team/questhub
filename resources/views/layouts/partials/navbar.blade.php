@@ -22,11 +22,11 @@
 		</form>
 		<ul class="nav navbar-nav navbar-right">
 			@if(Auth::check())
-			<li><a href="{{ action('UsersController@show', Auth::id()) }}"><span class="glyphicon glyphicon-user"></span> Profile<span class="sr-only">(current)</span></a></li>
-			<li><a href="{{ action('Auth\AuthController@getLogout') }}"><span class="glyphicon glyphicon-remove-circle"></span> Logout</a></li>
-			<li><a href="{{ action('EventsController@showAll')}}"><span class="glyphicon glyphicon-menu-hamburger"></span> Events</a></li>
+				<li><a href="{{ action('UsersController@show', Auth::id()) }}"><span class="glyphicon glyphicon-user"> Profile</span></a></li>
+				<li><a href="{{ action('Auth\AuthController@getLogout') }}"><span class="glyphicon glyphicon-remove-circle"> Logout</span></a></li>
+				<li><a href="{{ action('EventsController@showAll')}}"><span class="glyphicon glyphicon-menu-hamburger"> Events</span></a></li>
 			@else
-				<button type="button" class="btn btn-default btn-sm form-control navbar-form" data-toggle="modal" data-target="#login-modal"><span class="glyphicon glyphicon-log-in"></span> Login</button>
+				<li><a href="#" data-toggle="modal" data-target="#login-modal"><span class="glyphicon glyphicon-log-in"> Login</span></a></li>
 			@endif
 		</ul>
 	</div><!-- /.navbar-collapse -->
