@@ -191,5 +191,7 @@
 
 <div class="row col-lg-12">
 	<h2>Available Quests</h2>
+	<p>Quests will be available soon!</p>
 </div>
+
 @stop
