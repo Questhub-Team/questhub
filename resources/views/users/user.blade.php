@@ -4,7 +4,7 @@
 	<div class="col-md-6">
 		<h1 class="fancy-header">User Info</h1>
 		<div class="row">
-			<img src="/img/{{ $user->profile_img }}" class="profile-img display-block">
+			<img src="/img/{{ $user->profile_img }}" class="profile-img display-block" alt="user profile image">
 		</div>
 		<div class="row">
 			<span class="fancy-header text-center display-block">Username: {{$user->username}}</span>

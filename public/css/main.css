@@ -71,3 +71,7 @@ body {
 	height: 170px;
 	width: 170px;
 }
+
+#event-pagination {
+	width: 315px;
+}
