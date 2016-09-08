@@ -13,7 +13,7 @@
 			@foreach($user->interests as $interest)
 				@foreach ($interest->events as $event)
 					<div class="col-md-4 events">
-						<h4><a href="{{ action('EventsController@showOne', $event->id) }}" target="_BLANK">Name: {{ $event->name }}</a></h4>
+						<h4>Name: {{ $event->name }}</h4>
 
 							<p>{{ (isset($event->description)) ? strip_tags($event->description) : '' }}</p>
 						<form method="POST" action="{{ action('EventsController@store') }}">
