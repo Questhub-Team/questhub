@@ -9,6 +9,7 @@ use App\Http\Controllers\Controller;
 use Illuminate\Session\Middleware;
 use DB;
 use App\Events;
+use App\User;
 
 class EventsController extends Controller
 {
@@ -21,7 +22,7 @@ class EventsController extends Controller
     {
         $client = MeetupKeyAuthClient::factory(array('key' => env('MEETUP_KEY', null)));
         $query = [
-            'topic' => 'newtech',
+            'topic' => 'linux',
             'zip' => '78247',
             'country' => 'us',
             'state' => 'tx',
@@ -77,10 +78,16 @@ class EventsController extends Controller
         $data = compact('searchResult');
         return view('events.searchresults')->with($data);
     }
+    public function userEvents(Request $request)
+    {
+        //rather than a complicated join eager load the User interest and tie in events
+        $user_with_interests_and_events = User::with('interests.events')->find($request->user()->id);
+        $data = ['user' => $user_with_interests_and_events];
+        return view('events.user-events')->with($data);
+    }
     public function showAll()
     {        
         $response = Events::paginate(20);
-        // dd($response);
         $data = compact('response');
         return view('events.events')->with($data); 
     }
