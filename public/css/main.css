@@ -75,3 +75,16 @@ body {
 #event-pagination {
 	width: 315px;
 }
+
+.btn span.glyphicon {               
+    opacity: 0;             
+}
+.btn.active span.glyphicon {                
+    opacity: 1;             
+}
+.interest-buttons {
+    padding: 2px;
+}
+.glyphicon-ok {
+    color: red;
+}
