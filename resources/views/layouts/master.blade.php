@@ -18,13 +18,14 @@
 	  <script src="https://oss.maxcdn.com/html5shiv/3.7.3/html5shiv.min.js"></script>
 	  <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
 
-	<![endif]-->
-</head>
-<body>
-	<div class="container-fluid scroll">
-		@include('layouts.partials.navbar')
+	  <![endif]-->
+	</head>
+	<body>
+		<div class="container-fluid scroll">
+			@include('layouts.partials.navbar')
 
 
+			<<<<<<< HEAD
 			@yield('content')
 		</div>
 
@@ -39,7 +40,17 @@
 					console.log(position.coords.latitude, position.coords.longitude);
 				});
 			}
+			(function(){
+				$( document ).ready(function() {
+					$('.remove').hover(
+						function(){ $(this).addClass('glyphicon glyphicon-remove') },
+						function(){ $(this).removeClass('glyphicon glyphicon-remove') 
+					});
+				});	
+			})();
 		</script>
 		@yield('scripts')
+
 	</body>
 	</html>
+	

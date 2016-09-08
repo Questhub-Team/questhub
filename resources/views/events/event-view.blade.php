@@ -1,7 +1,7 @@
 @extends('layouts.master')
 @section('content')
 	<div>
-		<h1>Event Page</h1>
+		<h1 class="fancy-header">Event Page</h1>
 				<div class="col-md-4 events">
 					<h4><a href="{{ action('EventsController@showOne', $event->id) }}" target="_BLANK">
 						{{ $event->name }}</a></h4>

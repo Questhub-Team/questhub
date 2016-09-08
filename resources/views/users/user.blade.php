@@ -2,15 +2,18 @@
 @section('content')
 <div class="row">
 	<div class="col-md-6">
-		<h1>User Info</h1>
+		<h1 class="fancy-header">User Info</h1>
+		<div class="row">
+			<img src="/img/{{ $user->profile_img }}" class="profile-img display-block" alt="user profile image">
+		</div>
+		<div class="row">
+			<span class="fancy-header text-center display-block">Username: {{$user->username}}</span>
+			<br>
+			<span class="fancy-header text-center display-block">Name: {{$user->name}}</span>
+			<br>
+			<span class="fancy-header text-center display-block">Email: {{$user->email}}</span>	
+		</div>
 
-		<tr>
-			<td>Username: {{$user->username}}</td>
-			<br>
-			<td>Name: {{$user->name}}</td>
-			<br>
-			<td>Email: {{$user->email}}</td>
-		</tr>
 		<button type="button" class="btn btn-primary" data-toggle="modal" data-target="#edit-modal">Edit profile</button>
 	</div>
 
@@ -18,7 +21,10 @@
 		<div class="modal-dialog modal-lg" role="document">
 			<div class="modal-content">
 				<div class="container-fluid">
-					<h2>Edit Profile for {{ $user->name }}</h2>
+					<div class="modal-heading">
+						<button type="button" class="close" data-dismiss="modal">&times;</button>
+						<h2 id="edit-h2">Edit Profile for {{ $user->name }}</h2>
+					</div>
 
 					<form method="POST" action="{{ action('UsersController@update') }}" id="edit-profile-form">
 						<input type="hidden" name="_method" value="PUT">
@@ -40,31 +46,31 @@
 							<label for="password">Password</label>
 							<input type="password" class="form-control" id="password" name="password" placeholder="Password">
 						</div>
-						<button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
 						<button type="submit" class="btn btn-primary">Submit</button>
 					</form>
 				</div>
 			</div>
 		</div>
 	</div>
-	<div class="col-md-6">
-		<h2>Interests</h2>
+		<h2 class="fancy-header">Interests</h2>
 		@foreach ($user->interests as $interest)
-		<form method = 'post' action="{{ action('UsersController@destroy', $interest->id) }}">
-		<input type="hidden" name="_method" value="DELETE">
-			{{ csrf_field() }}
-				<button type="submit" class="btn btn-danger">{{ $interest->name }}</button>
-		</form>
+		<div class="col-md-2">
+			<form method = 'post' action="{{ action('UsersController@destroy', $interest->id) }}">
+			<input type="hidden" name="_method" value="DELETE">
+				{{ csrf_field() }}
+					<span class="remove"><button type="submit" class="btn interest-btn" >{{ $interest->name }}</button></span>
+			</form>
+		</div>
 		@endforeach
-	</div>
 </div>
 
 <button class='btn btn-success' data-toggle="modal" data-target="#interest-modal">Add Interests</button>
+	<div class="bar"></div>
 <div class="modal fade" id="interest-modal" tabindex="-1" role="dialog" aria-labelledby="edit interests">
 	<div class="modal-dialog modal-lg" role="document">
 		<div class="modal-content">
 			<div class="container-fluid">
-			<h2>Interest Panel</h2>
+			<h2 class="fancy-header">Interest Panel</h2>
 
 				<form class="form-horizontal" role="form" method="POST" action="{{ action('UsersController@updateInterests') }}">
 				<input type="hidden" name="_method" value="PUT">
@@ -168,7 +174,7 @@
 </div>
 </form>
 <div>
-	<h2>Liked Events</h2>
+	<h2 class="fancy-header">Liked Events</h2>
 	@foreach ($userEvents as $userEvent)
 		<div class="col-md-4 events">
 			<h3><a href="{{ (isset($userEvent->event_url)) ? $userEvent->event_url : '' }}" target="_BLANK">
@@ -180,10 +186,7 @@
 		</div> 
 	@endforeach
 </div>
-<div>
-	<h2>Available Quests</h2>
-</div>
-<div class = "col-sm-4">
-
-</div>
+	<div class="row col-lg-12">
+		<h2>Available Quests</h2>
+	</div>
 @stop
