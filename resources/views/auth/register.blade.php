@@ -18,20 +18,7 @@
         </ul>
     </div>
 @endif
-<style>
-.btn span.glyphicon {               
-    opacity: 0;             
-}
-.btn.active span.glyphicon {                
-    opacity: 1;             
-}
-.interest-buttons {
-    padding: 2px;
-}
-.glyphicon {
-    color: red;
-}
-</style>
+
 <form class="form-horizontal" role="form" method="POST" enctype="multipart/form-data" action="{{ action('UsersController@store') }}">
     <input type="hidden" name="_token" value="{{ csrf_token() }}">
 
