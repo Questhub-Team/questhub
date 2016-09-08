@@ -1,7 +1,7 @@
 @extends('layouts.master')
 @section('content')
 	<div>
-		<h1>Events</h1>
+		<h1 class="fancy-header">Events</h1>
 			@foreach ($response as $responseItem)
 				<div class="col-md-4 events">
 					<h4><a href="{{ action('EventsController@showOne', $responseItem->id) }}" target="_BLANK">

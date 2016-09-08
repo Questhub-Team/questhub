@@ -8,7 +8,7 @@
 	}
 </style>
 	<div>
-		<h1>Search Result</h1>
+		<h1 class="fancy-header">Search Result</h1>
 			@foreach ($searchResult as $responseItem)
 				<div class="col-md-4 events">
 					<h4>Name: {{ $responseItem->name }}</h4>

@@ -1,7 +1,9 @@
 #login-modal {
 	margin-bottom: 20px;
 }
-
+.btn {
+	margin: 5px;
+}
 #edit-profile-form {
 	margin-bottom: 20px;
 }
@@ -11,7 +13,9 @@
 	width: 250px;
 	overflow-y: auto;
 }
-
+.remove {
+	color: red;
+}
 #logo {
 	display: block;
 }
@@ -26,7 +30,11 @@ body {
 	padding-left: 20px;
 	padding-right: 20px;
 }
-
+.bar {
+	width: 100%;
+	height: 1px;
+	background-color: black;
+}
 .navbar,
 .navbar-default,
 .navbar-collapse,
