@@ -24,7 +24,10 @@
 		<div class="modal-dialog modal-lg" role="document">
 			<div class="modal-content">
 				<div class="container-fluid">
-					<h2>Login to Questhub</h2>
+					<div class="modal-heading">
+						<button type="button" class="close" data-dismiss="modal">&times;</button>
+						<h2>Login to Questhub</h2>
+					</div>
 					<form method="POST" action="{{ action('Auth\AuthController@postLogin')}}" id="login-modal">
 						{{ csrf_field() }}
 						<div class="form-group">
@@ -44,7 +47,6 @@
 								placeholder="Password">
 						</div>
 							<button type="submit" class="btn btn-primary"><span class="glyphicon glyphicon-log-in"></span> Login</button>
-							<button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
 					</form>
 				</div>
 			</div>
