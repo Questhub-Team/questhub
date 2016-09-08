@@ -10,7 +10,9 @@
 			<td>Name: {{$user->name}}</td>
 			<br>
 			<td>Email: {{$user->email}}</td>
+			<td><img src="{{ $user->profile_img }}"></td>
 		</tr>
+
 		<button type="button" class="btn btn-primary" data-toggle="modal" data-target="#edit-modal">Edit profile</button>
 	</div>
 
@@ -18,7 +20,10 @@
 		<div class="modal-dialog modal-lg" role="document">
 			<div class="modal-content">
 				<div class="container-fluid">
-					<h2>Edit Profile for {{ $user->name }}</h2>
+					<div class="modal-heading">
+						<button type="button" class="close" data-dismiss="modal">&times;</button>
+						<h2 id="edit-h2">Edit Profile for {{ $user->name }}</h2>
+					</div>
 
 					<form method="POST" action="{{ action('UsersController@update') }}" id="edit-profile-form">
 						<input type="hidden" name="_method" value="PUT">
@@ -40,7 +45,6 @@
 							<label for="password">Password</label>
 							<input type="password" class="form-control" id="password" name="password" placeholder="Password">
 						</div>
-						<button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
 						<button type="submit" class="btn btn-primary">Submit</button>
 					</form>
 				</div>

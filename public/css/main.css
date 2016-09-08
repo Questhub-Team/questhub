@@ -6,6 +6,11 @@
 	margin-bottom: 20px;
 }
 
+.modal-heading {
+	margin-top: 15px;
+	margin-bottom: 5px;
+}
+
 .events {
 	height: 400px;
 	width: 250px;
@@ -45,4 +50,8 @@ body {
 }
 .register-text {
 	font-size: 20px;
+}
+
+#edit-h2 {
+	display: inline;
 }
