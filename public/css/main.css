@@ -76,10 +76,10 @@ body {
 	width: 315px;
 }
 
-.btn span.glyphicon {               
+.btn span.glyphicon-ok {               
     opacity: 0;             
 }
-.btn.active span.glyphicon {                
+.btn.active span.glyphicon-ok {             
     opacity: 1;             
 }
 .interest-buttons {
