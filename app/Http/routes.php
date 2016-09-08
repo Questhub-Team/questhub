@@ -10,6 +10,7 @@
 | and give it the controller to call when that URI is requested.
 |
 */
+Route::get('/user-events', 'EventsController@userEvents');
 Route::get('/one-event/{id}', 'EventsController@showOne');
 Route::get('/all-events', 'EventsController@showAll');
 Route::resource('/', 'EventsController');
