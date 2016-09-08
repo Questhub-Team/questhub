@@ -22,11 +22,6 @@
 						<input type='hidden' name='event_id' value="{{ $responseItem->id }}">
 						<button type='submit' class='btn btn-default'>Like</button>
 					</form>
-					<form method="POST" action="#">
-						{{ csrf_field() }}
-						<input type='hidden' name='ignore' value='0'>
-						<button type='submit' class='btn btn-default'>Ignore</button>
-					</form>
 				</div> 
 			@endforeach
 			<span colspan="7" class="text-center">{!! $searchResult->render() !!}</span>

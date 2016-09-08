@@ -10,6 +10,8 @@ use Illuminate\Session\Middleware;
 use DB;
 use App\Events;
 use App\User;
+use App\Models\UserEvents;
+use Auth;
 
 class EventsController extends Controller
 {
@@ -126,9 +128,12 @@ class EventsController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
+    public function destroy(Request $request, $id)
     {
-        //
+        $event = UserEvents::where('event_id', $id)->where('user_id', Auth::user()->id)->first();
+        $event->delete();
+        $request->session()->flash('message', 'Event has been ignored');
+        return redirect()->action('UsersController@show', Auth::user()->id);
     }
 
     public function compareDistance(Request $request)
