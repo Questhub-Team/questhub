@@ -41,7 +41,8 @@ class UsersController extends Controller
 		$user->name = $request->input('name');
 		$user->email = $request->input('email');
 		$user->password = Hash::make($request->input('password'));
-		$user->profile_img = User::saveUploadImage($request->input('fileToUpload'));
+		// dd($_POST,$_FILES, $request->file('fileToUpload'));
+		$user->profile_img = User::saveUploadImage('fileToUpload');
 		$user->save();
 
 

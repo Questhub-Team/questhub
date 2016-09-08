@@ -32,7 +32,7 @@
     color: red;
 }
 </style>
-<form class="form-horizontal" role="form" method="POST" enctype="mutlipart/form-data" action="{{ action('UsersController@store') }}">
+<form class="form-horizontal" role="form" method="POST" enctype="multipart/form-data" action="{{ action('UsersController@store') }}">
     <input type="hidden" name="_token" value="{{ csrf_token() }}">
 
     <div class="form-group">
