@@ -79,7 +79,7 @@ class UsersController extends Controller
 				->join('user_events', 'user_events.event_id', '=', 'events.id')
 				->join('users', 'users.id', '=', 'user_events.user_id')
 				->where('users.id', '=', $user->id)
-				->select('events.name', 'events.location', 'events.description')
+				->select('events.name', 'events.location', 'events.description', 'events.id')
 				->get();
 		$data = compact('user', 'userEvents');
 
