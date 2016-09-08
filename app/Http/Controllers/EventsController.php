@@ -9,6 +9,9 @@ use App\Http\Controllers\Controller;
 use Illuminate\Session\Middleware;
 use DB;
 use App\Events;
+use App\User;
+use App\Models\UserEvents;
+use Auth;
 
 class EventsController extends Controller
 {
@@ -21,7 +24,7 @@ class EventsController extends Controller
     {
         $client = MeetupKeyAuthClient::factory(array('key' => env('MEETUP_KEY', null)));
         $query = [
-            'topic' => 'newtech',
+            'topic' => 'linux',
             'zip' => '78247',
             'country' => 'us',
             'state' => 'tx',
@@ -77,10 +80,16 @@ class EventsController extends Controller
         $data = compact('searchResult');
         return view('events.searchresults')->with($data);
     }
+    public function userEvents(Request $request)
+    {
+        //rather than a complicated join eager load the User interest and tie in events
+        $user_with_interests_and_events = User::with('interests.events')->find($request->user()->id);
+        $data = ['user' => $user_with_interests_and_events];
+        return view('events.user-events')->with($data);
+    }
     public function showAll()
     {        
         $response = Events::paginate(20);
-        // dd($response);
         $data = compact('response');
         return view('events.events')->with($data); 
     }
@@ -119,8 +128,22 @@ class EventsController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
+    public function destroy(Request $request, $id)
     {
-        //
+        $event = UserEvents::where('event_id', $id)->where('user_id', Auth::user()->id)->first();
+        $event->delete();
+        $request->session()->flash('message', 'Event has been ignored');
+        return redirect()->action('UsersController@show', Auth::user()->id);
+    }
+
+    public function compareDistance(Request $request)
+    {
+        $latitude = $request->input('latitude');
+        $longitude = $request->input('longitude');
+        $event = Events::findOrFail($request->input('event_id'));
+
+        $distance_between = $event->getDistance($latitude, $longitude);
+
+        return $distance_between;
     }
 }

@@ -56,9 +56,11 @@
 		<br>
 <div class="bar"></div>
 		<br>
-	<div class="container-fluid register-btn text-center">
-		<a href="{{ action('Auth\AuthController@getRegister')}}" class="btn btn-primary btn-lg display-block" id="register">
-			<span class="display-block text-center register-text">Register</span>
-		</a>
-	</div>
+		@if (!Auth::check())
+			<div class="container-fluid register-btn text-center">
+				<a href="{{ action('Auth\AuthController@getRegister')}}" class="btn btn-primary btn-lg display-block" id="register">
+					<span class="display-block text-center register-text">Register</span>
+				</a>
+			</div>
+		@endif
 @stop

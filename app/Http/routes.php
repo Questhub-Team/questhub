@@ -10,9 +10,14 @@
 | and give it the controller to call when that URI is requested.
 |
 */
+Route::get('/user-events', 'EventsController@userEvents');
 Route::get('/one-event/{id}', 'EventsController@showOne');
 Route::get('/all-events', 'EventsController@showAll');
-Route::resource('/', 'EventsController');
+
+Route::get('/ajax/events/get-distance', 'EventsController@compareDistance');
+Route::get('/', 'EventsController@index');
+Route::resource('events', 'EventsController');
+
 
 Route::put('/users/interests', 'UsersController@updateInterests');
 Route::resource('users', 'UsersController');
