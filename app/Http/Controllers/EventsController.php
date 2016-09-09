@@ -136,7 +136,7 @@ class EventsController extends Controller
         return redirect()->action('UsersController@show', Auth::user()->id);
     }
 
-    public function compareDistance(Request $request, $id)
+    public function compareDistance(Request $request)
     {
         $latitude = $request->input('latitude');
         $longitude = $request->input('longitude');
