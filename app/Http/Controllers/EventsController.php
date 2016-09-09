@@ -152,10 +152,7 @@ class EventsController extends Controller
             'completed' => '1']);
             $quest->event_id = $request->input('event_id');
             $quest->save();
-            echo("Check-in completed!");
-        } else {
-            echo("Check-in is too far away!");
-        }
+        } 
         return $distance_between;
 
         
