@@ -13,6 +13,7 @@
 
 	<!-- Collect the nav links, forms, and other content for toggling -->
 	<div class="collapse navbar-collapse" id="navbar-collapse">
+		@if (Auth::check())
 		<form method="GET" class="navbar-form navbar-right" action="{{ action('EventsController@show') }}">
 			{{ csrf_field() }}
 			<div class="form-group">
@@ -20,6 +21,7 @@
 			</div>
 			<button type="submit" class="btn btn-default"><span class="glyphicon glyphicon-search"></span> Search</button>
 		</form>
+		@endif
 		<ul class="nav navbar-nav navbar-left">
 			@if(Auth::check())
 				<li class="dropdown">
