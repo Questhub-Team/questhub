@@ -55,7 +55,6 @@
 				var event_id = $(this).data('event-id');
 				var check_in_url = $('#check-in-url').val();
 				var csrf_token = $('#csrf_token').val();
-				console.log(csrf_token);
 				$.ajax({
 					type: 'POST',
 					url: check_in_url,

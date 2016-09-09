@@ -26,6 +26,9 @@
         <label class="col-md-4 control-label">Username</label>
         <div class="col-md-6">
             <input type="text" class="form-control" name="username" value="{{ old('username') }}" required>
+        @if ($errors->has('username'))
+            {!! $errors->first('username', '<span class="help-block bg-danger">:message</span>') !!}
+        @endif
         </div>
     </div>
 
@@ -33,6 +36,9 @@
         <label class="col-md-4 control-label">Name</label>
         <div class="col-md-6">
             <input type="text" class="form-control" name="name" value="{{ old('name') }}" required>
+        @if ($errors->has('name'))
+            {!! $errors->first('name', '<span class="help-block bg-danger">:message</span>') !!}
+        @endif
         </div>
     </div>
 
@@ -40,6 +46,9 @@
         <label class="col-md-4 control-label">E-Mail Address</label>
         <div class="col-md-6">
             <input type="email" class="form-control" name="email" value="{{ old('email') }}" required>
+        @if ($errors->has('email'))
+            {!! $errors->first('email', '<span class="help-block bg-danger">:message</span>') !!}
+        @endif
         </div>
     </div>
 
@@ -47,13 +56,19 @@
         <label class="col-md-4 control-label">Password</label>
         <div class="col-md-6">
             <input type="password" class="form-control" name="password" required>
+        @if ($errors->has('password'))
+            {!! $errors->first('password', '<span class="help-block bg-danger">:message</span>') !!}
+        @endif
         </div>
     </div>
 
     <div class="form-group">
         <label class="col-md-4 control-label">Confirm Password</label>
         <div class="col-md-6">
-            <input type="password" class="form-control" name="password_confirmation" >
+            <input type="password" class="form-control" name="password_confirmation" required>
+        @if ($errors->has('password'))
+            {!! $errors->first('password', '<span class="help-block bg-danger">:message</span>') !!}
+        @endif
         </div>
     </div>
     <div class="form-group">

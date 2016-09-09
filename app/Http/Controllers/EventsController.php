@@ -152,10 +152,7 @@ class EventsController extends Controller
             'completed' => '1']);
             $quest->event_id = $request->input('event_id');
             $quest->save();
-            alert("Check-in completed! You are " . $distance_between . " miles away.");
-        } else {
-            alert("Check-in is too far away! You are " . $distance_between . " miles away, you must be within 2 to check-in.");
-        }
+        } 
         return $distance_between;
 
         
