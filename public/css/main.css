@@ -88,6 +88,15 @@ body {
 .glyphicon-ok {
     color: red;
 }
+
+.standout {
+	color: #800000;
+}
+
+.caret {
+	border-width: 5px;
+}
+
 .sample-groups {
 	height: 400px;
 	background-color: whitesmoke;
