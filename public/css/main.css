@@ -89,6 +89,6 @@ body {
     color: red;
 }
 .sample-groups {
-	/*background-image: url('/img/parchment.jpg');*/
-	background-color: red;
-}
+	height: 400px;
+	background-color: whitesmoke;
+	background-size: 100%, 100%, 100%, 100%;
