@@ -136,7 +136,7 @@ class EventsController extends Controller
         return redirect()->action('UsersController@show', Auth::user()->id);
     }
 
-    public function compareDistance(Request $request)
+    public function compareDistance(Request $request, $id)
     {
         $latitude = $request->input('latitude');
         $longitude = $request->input('longitude');
@@ -145,11 +145,19 @@ class EventsController extends Controller
         $distance_between = $event->getDistance($latitude, $longitude);
 
         if($distance_between <= 2){
-            //Auth user and submit
-            //Event_id and submit
-            //Completed boolean and submit
+            
+            $quest = \App\Models\UserQuests::firstOrCreate([
+            'user_id' => $request->user()->id,
+            'event_id' => $request->input('event_id'),
+            'completed' => '1']);
+            $quest->event_id = $request->input('event_id');
+            $quest->save();
+            alert("Check-in completed! You are " . $distance_between . " miles away.");
+        } else {
+            alert("Check-in is too far away! You are " . $distance_between . " miles away, you must be within 2 to check-in.");
         }
-
         return $distance_between;
+
+        
     }
 }
