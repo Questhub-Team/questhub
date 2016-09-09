@@ -24,11 +24,11 @@ class EventsController extends Controller
     {
         $client = MeetupKeyAuthClient::factory(array('key' => env('MEETUP_KEY', null)));
         $query = [
-            'topic' => 'linux',
-            'zip' => '78247',
-            'country' => 'us',
-            'state' => 'tx',
-            'city' => 'san antonio'
+        'topic' => 'linux',
+        'zip' => '78247',
+        'country' => 'us',
+        'state' => 'tx',
+        'city' => 'san antonio'
         ];
         $response = $client->getGroups($query);
         $data = compact('response');
@@ -143,6 +143,12 @@ class EventsController extends Controller
         $event = Events::findOrFail($request->input('event_id'));
 
         $distance_between = $event->getDistance($latitude, $longitude);
+
+        if($distance_between <= 2){
+            //Auth user and submit
+            //Event_id and submit
+            //Completed boolean and submit
+        }
 
         return $distance_between;
     }
