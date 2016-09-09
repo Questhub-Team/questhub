@@ -25,6 +25,7 @@
 			@include('layouts.partials.navbar')
 			@yield('content')
 		</div>
+		<input type="hidden" name="_token" id="csrf_token" value="{{ Session::token() }}">
 		<!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
 		<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
 		<!-- Latest compiled and minified JavaScript -->
@@ -53,10 +54,13 @@
 				console.log(latitude, longitude);
 				var event_id = $(this).data('event-id');
 				var check_in_url = $('#check-in-url').val();
+				var csrf_token = $('#csrf_token').val();
+				console.log(csrf_token);
 				$.ajax({
 					type: 'POST',
 					url: check_in_url,
 					data: {
+						_token: csrf_token,
 						latitude: latitude,
 						longitude: longitude,
 						event_id: event_id,
