@@ -88,3 +88,7 @@ body {
 .glyphicon-ok {
     color: red;
 }
+.sample-groups {
+	height: 400px;
+	background-color: whitesmoke;
+	background-size: 100%, 100%, 100%, 100%;

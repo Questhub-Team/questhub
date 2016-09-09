@@ -9,7 +9,7 @@
 </style>
 	<div>
 		<h1 class="fancy-header">Events</h1>
-			<span>These are your events based on the interest selected</span>
+			<p>These are your events based on the interest selected</p>
 			@foreach($user->interests as $interest)
 				@foreach ($interest->events as $event)
 					<div class="col-md-4 events">

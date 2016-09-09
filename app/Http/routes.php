@@ -19,7 +19,6 @@ Route::post('/ajax/events/get-distance', 'EventsController@compareDistance');
 Route::get('/', 'EventsController@index');
 Route::resource('events', 'EventsController');
 
-
 Route::put('/users/interests', 'UsersController@updateInterests');
 Route::resource('users', 'UsersController');
 
