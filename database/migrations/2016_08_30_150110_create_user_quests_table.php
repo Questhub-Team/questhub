@@ -18,6 +18,7 @@ class CreateUserQuestsTable extends Migration
 
            $table->integer('event_id')->unsigned();
            $table->foreign('event_id')->references('id')->on('events');
+           $table->timestamps();
 
            $table->boolean('completed');
 

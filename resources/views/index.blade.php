@@ -9,7 +9,6 @@
 	<div class="bar"></div>
 		<br>
 			<h4 class="text-center fancy-header">Sample Groups</h4>
-			<div class="welcome"> 
 				<?php $i=0 ?>
 					@foreach ($response as $responseItem)
 						<div class="col-md-4">
@@ -21,7 +20,6 @@
 								<?php break; ?>
 							<?php } ?>
 					@endforeach
-			</div>
 	<div class="modal fade" id="login-modal" tabindex="-1" role="dialog" aria-labelledby="login form">
 		<div class="modal-dialog modal-lg" role="document">
 			<div class="modal-content">

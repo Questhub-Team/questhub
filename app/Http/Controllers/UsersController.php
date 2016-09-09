@@ -12,6 +12,7 @@ use App\User;
 use App\Models\UserInterests;
 use Hash;
 use DB;
+use Route;
 
 class UsersController extends Controller
 	{
@@ -135,10 +136,12 @@ class UsersController extends Controller
 
 	public function destroy(Request $request, $id)
 	{
-		$user_interest = \App\Models\UserInterests::where('interest_id', $id)->first();
+		$user_interest = UserInterests::where('interest_id', $id)->first();
 		$user_interest->delete();
+		$user_id = $request->user()->id;
 		$request->session()->flash('message', 'Interest has been deleted');
-		return redirect()->action('UsersController@show', $user_interest->user_id);
+		//dd($user_id, 'This is the user id', $user_interest->interest_id, "this is the interest id", Route::currentRouteAction());
+		return redirect()->action('UsersController@show', $user_id);
 	}
 
 }

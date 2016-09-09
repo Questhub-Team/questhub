@@ -179,7 +179,7 @@
 	<h2 class="fancy-header">Liked Events</h2>
 	@foreach ($userEvents as $userEvent)
 		<div class="col-md-4 events">
-			<h3><a href="{{ (isset($userEvent->event_url)) ? $userEvent->event_url : '' }}" target="_BLANK">
+			<h3><a href="{{ action('EventsController@showOne', $userEvent->id) }}" target="_BLANK">
 				Name: {{ $userEvent->name }}</a></h4>
 
 				<p>Location: {{ (isset($userEvent->location)) ? $userEvent->location : '' }}</p>
