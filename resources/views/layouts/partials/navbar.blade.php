@@ -20,12 +20,18 @@
 			</div>
 			<button type="submit" class="btn btn-default"><span class="glyphicon glyphicon-search"></span> Search</button>
 		</form>
-		<ul class="nav navbar-nav navbar-right">
+		<ul class="nav navbar-nav navbar-left">
 			@if(Auth::check())
-				<li><a href="{{ action('UsersController@show', Auth::id()) }}"><span class="glyphicon glyphicon-user"> Profile</span></a></li>
-				<li><a href="{{ action('Auth\AuthController@getLogout') }}"><span class="glyphicon glyphicon-remove-circle"> Logout</span></a></li>
-				<li><a href="{{ action('EventsController@showAll')}}"><span class="glyphicon glyphicon-menu-hamburger"> All Events</span></a></li>
-				<li><a href="{{ action('EventsController@userEvents')}}"><span class="glyphicon glyphicon-menu-hamburger"> My Events</span></a></li>
+				<li class="dropdown">
+					<a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Welcome, {{ Auth::user()->name }} <span class="caret standout" id="standout"></span></a>
+					<ul class="dropdown-menu">
+						<li><a href="{{ action('UsersController@show', Auth::id()) }}"><span class="glyphicon glyphicon-user"> Profile</span></a></li>
+						<li><a href="{{ action('EventsController@showAll')}}"><span class="glyphicon glyphicon-menu-hamburger"> All Events</span></a></li>
+						<li><a href="{{ action('EventsController@userEvents')}}"><span class="glyphicon glyphicon-menu-hamburger"> My Events</span></a></li>
+						<li role="separator" class="divider"></li>
+						<li><a href="{{ action('Auth\AuthController@getLogout') }}"><span class="glyphicon glyphicon-remove-circle"> Logout</span></a></li>
+					</ul>
+				</li>
 			@else
 				<li><a href="#" data-toggle="modal" data-target="#login-modal"><span class="glyphicon glyphicon-log-in"> Login</span></a></li>
 			@endif
