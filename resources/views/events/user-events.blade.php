@@ -1,7 +1,7 @@
 @extends('layouts.master')
 @section('content')
 		<h1 class="fancy-header text-center">Events</h1>
-			<p class="text-center">Here are some events based on the interest you selected.</p>
+			<p class="text-center">Here are some events based on the interests you selected.</p>
 				<div class="col-lg-10 events-container">
 					@foreach($user->interests as $interest)
 						@foreach ($interest->events as $event)
