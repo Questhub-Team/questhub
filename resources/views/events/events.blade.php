@@ -1,12 +1,10 @@
 @extends('layouts.master')
 @section('content')
-	<div class="row">
-		<h1>Events</h1>
+		<h1 class="text-center">Events</h1>
+		<div class="col-lg-10 events-container">
 			@foreach ($response as $responseItem)
 				<div class="col-md-4 events">
-					<h4><a href="{{ action('EventsController@showOne', $responseItem->id) }}" target="_BLANK">
-						Name: {{ $responseItem->name }}</a></h4>
-
+					<h4>Name: {{ $responseItem->name }}</a></h4>
 						<p>{{ (isset($responseItem->description)) ? strip_tags($responseItem->description) : '' }}</p>
 					<form method="POST" action="{{ action('EventsController@store') }}">
 						{{ csrf_field() }}
@@ -16,6 +14,6 @@
 					</form>
 				</div> 
 			@endforeach
-	</div>
+		</div>
 	<div class="pagination center-block" id="event-pagination">{!! $response->render() !!}</div>
 @stop

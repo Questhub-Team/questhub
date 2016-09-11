@@ -60,8 +60,10 @@ class EventsController extends Controller
         $event->user_id = $request->input('user_id');
         $event->event_id = $request->input('event_id');
         $event->save();
+        $request->session()->flash('message', 'Event has been saved to profile');
 
         return redirect()->action('EventsController@showAll');
+
     }
 
     /**
