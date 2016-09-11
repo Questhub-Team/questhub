@@ -17,6 +17,15 @@
 	height: 400px;
 	width: 250px;
 	overflow-y: auto;
+	border: 1px solid darkgrey;
+	margin: 20px;
+	padding-left: 20px;
+	padding-right: 20px;
+	padding-top: 10px;
+	padding-bottom: 5px;
+}
+.events-container {
+	left: 13%;
 }
 .remove {
 	color: red;

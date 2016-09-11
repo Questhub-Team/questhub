@@ -43,7 +43,7 @@ class UsersController extends Controller
             'email' => 'required|email|max:255|unique:users',
             'password' => 'required|confirmed|min:6',
         ]);
-        
+
 		$user = new User();
 		$user->username = $request->input('username');
 		$user->name = $request->input('name');
@@ -146,8 +146,6 @@ class UsersController extends Controller
 		$user_interest = UserInterests::where('interest_id', $id)->first();
 		$user_interest->delete();
 		$user_id = $request->user()->id;
-		$request->session()->flash('message', 'Interest has been deleted');
-		//dd($user_id, 'This is the user id', $user_interest->interest_id, "this is the interest id", Route::currentRouteAction());
 		return redirect()->action('UsersController@show', $user_id);
 	}
 
