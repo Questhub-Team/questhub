@@ -1,22 +1,21 @@
 @extends('layouts.master')
 @section('content')
+<h1>Profile for {{$user->name}}</h1>
 <div class="row">
 	<div class="col-md-6">
-		<h1 class="fancy-header">User Info</h1>
-		<div class="row">
-			<img src="/img/{{ $user->profile_img }}" class="profile-img display-block" alt="user profile image">
+		<h2 class="fancy-header">User Info</h2>
+		<div class="col-md-5">
+			<img src="/img/{{ $user->profile_img }}" class="profile-img" alt="user profile image">
 		</div>
-		<div class="row">
-			<span class="fancy-header text-center display-block">Username: {{$user->username}}</span>
-			<br>
-			<span class="fancy-header text-center display-block">Name: {{$user->name}}</span>
-			<br>
-			<span class="fancy-header text-center display-block">Email: {{$user->email}}</span>	
+		<div class="col-md-7">
+			<p class="large">Username: {{$user->username}}</p>
+			<p class="large">Email: {{$user->email}}</p>
+			<p class="large">Joined: {{ $user->created_at->format('m-d-Y') }}</p>
+		
+			<button type="button" class="btn btn-primary btn-profile" data-toggle="modal" data-target="#edit-modal">Edit profile</button>
+			<button class="btn btn-success btn-profile" data-toggle="modal" data-target="#interest-modal">Add Interests</button>
 		</div>
-
-		<button type="button" class="btn btn-primary" data-toggle="modal" data-target="#edit-modal">Edit profile</button>
 	</div>
-
 	<div class="modal fade" id="edit-modal" tabindex="-1" role="dialog" aria-labelledby="edit profile">
 		<div class="modal-dialog modal-lg" role="document">
 			<div class="modal-content">
@@ -52,20 +51,19 @@
 			</div>
 		</div>
 	</div>
+	<div class="col-md-6">
 	<h2 class="fancy-header">Interests</h2>
 	@foreach ($user->interests as $interest)
-		<div class="col-md-2">
-			<form method = 'post' action="{{ action('UsersController@destroy', $interest->id) }}">
+			<form method = 'post' action="{{ action('UsersController@destroy', $interest->id) }}" class="inline">
 			<input type="hidden" name="_method" value="DELETE">
 				{{ csrf_field() }}
 					<span class="remove"><button type="submit" class="btn interest-btn" >{{ $interest->name }}</button></span>
 			</form>
-		</div>
 	@endforeach
+	</div>
 </div>
 
-<button class='btn btn-success' data-toggle="modal" data-target="#interest-modal">Add Interests</button>
-	<div class="bar"></div>
+<div class="bar"></div>
 <div class="modal fade" id="interest-modal" tabindex="-1" role="dialog" aria-labelledby="edit interests">
 	<div class="modal-dialog modal-lg" role="document">
 		<div class="modal-content">
