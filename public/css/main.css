@@ -16,19 +16,19 @@
 }
 
 .events {
-	height: 400px;
-	width: 250px;
+	height: 500px;
+	width: 400px;
 	overflow: auto;
-	border: 1px solid darkgrey;
-	margin: 20px;
-	padding-left: 20px;
-	padding-right: 20px;
+	margin: 30px;
+	padding-left: 40px;
+	padding-right: 40px;
 	padding-top: 10px;
 	padding-bottom: 5px;
+	background-color: snow;
 }
 
 .events-container {
-	left: 13%;
+	left: 11.5%;
 }
 
 .remove {
@@ -44,7 +44,7 @@
 }
 
 body {
-	background-color: #f8f8f8;
+	background-color: gainsboro;
 	font-family: 'Balthazar', serif;
 	padding-left: 20px;
 	padding-right: 20px;
@@ -61,7 +61,8 @@ body {
 .navbar-collapse,
 .navbar-default,
 .navbar-form  {
-	border-color: #f8f8f8;
+	border-color: gainsboro;
+	background-color: gainsboro;
 }
 
 #register {
@@ -123,7 +124,7 @@ body {
 
 .sample-groups {
 	height: 400px;
-	background-color: whitesmoke;
+	background-color: snow;
 	background-size: 100%, 100%, 100%, 100%;
 }
 
