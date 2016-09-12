@@ -1,20 +1,8 @@
 @extends('layouts.master')
 @section('content')
-<style>
-#map-canvas {
-	width: 400px;
-	height: 400px;
-	position: relative;
-	left: 35%;
-	border: solid 1px darkgrey;
-}
-</style>
 	<div class="row">
-		<div class="col-lg-8 col-lg-offset-2">
+		<div class="col-lg-5 col-lg-offset-1">
 			<h1 class="fancy-header">Event Page</h1>
-		</div>
-
-		<div class="col-lg-8 col-lg-offset-2">
 			<h4>
 				<a href="{{ action('EventsController@showOne', $oneEvent->id) }}" target="_BLANK">
 				{{ $oneEvent->name }}</a>
@@ -31,6 +19,10 @@
 
 		</div> 
 		<input type="hidden" name="check-in-url" id="check-in-url" value="{{ action('EventsController@compareDistance') }}">
+		
+		<div class="col-lg-5">
+			<div id="map-canvas"></div>
+		</div>
 	</div>
 	@if (isset($oneEvent->lat))
 		<p>Event Location:</p>
