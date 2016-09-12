@@ -25,7 +25,6 @@
 		</div>
 	</div>
 	@if (isset($oneEvent->lat))
-		<p>Event Location:</p>
 		<div id="map-canvas"></div>
 	@else <p class="map-fail text-center">{{ 'We were unable to retrieve a map for this event' }}</p>
 	@endif
