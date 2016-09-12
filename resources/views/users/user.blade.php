@@ -2,7 +2,7 @@
 @section('content')
 <h1>Profile for {{$user->name}}</h1>
 <div class="row">
-	<div class="col-md-6">
+	<div class="col-md-6" id = 'infotab'>
 		<h2 class="fancy-header">User Info</h2>
 		<div class="col-md-5">
 			<img src="/img/{{ $user->profile_img }}" class="profile-img" alt="user profile image">
@@ -50,7 +50,7 @@
 			</div>
 		</div>
 	</div>
-	<div class="col-md-6">
+	<div class="col-md-6" id = "inttab">
 	<h2 class="fancy-header">Interests</h2>
 	@foreach ($user->interests as $interest)
 			<form method = 'post' action="{{ action('UsersController@destroy', $interest->id) }}" class="inline">
@@ -175,7 +175,7 @@
 <div class="row">
 	<h2 class="fancy-header">Liked Events</h2>
 	@foreach ($userEvents as $userEvent)
-		<div class="col-md-4 events">
+		<div class="col-md-4 events" id = 'eventtab'>
 			<h3><a href="{{ action('EventsController@showOne', $userEvent->id) }}" target="_BLANK">
 				Name: {{ $userEvent->name }}</a></h4>
 
@@ -191,9 +191,5 @@
 	@endforeach
 </div>
 
-<div class="row col-lg-12">
-	<h2>Available Quests</h2>
-	<p>Quests will be available soon!</p>
-</div>
 
 @stop
