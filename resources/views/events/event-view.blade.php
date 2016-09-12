@@ -32,9 +32,11 @@
 		</div> 
 		<input type="hidden" name="check-in-url" id="check-in-url" value="{{ action('EventsController@compareDistance') }}">
 	</div>
+	@if (isset($oneEvent->lat))
 		<p>Event Location:</p>
 		<div id="map-canvas"></div>
-
+	@else <p class="map-fail text-center">{{ 'We were unable to retrieve a map for this event' }}</p>
+	@endif
 <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBzTSysv46TsCqOcDsv061aupuHUPAVBUE"></script>
 <scrip src="https://maps.googleapis.com/maps/api/js?sensor=false"></script>
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.js"></script>
@@ -50,14 +52,13 @@ $(document).ready(function initMap() {
 
 	};
 
-	var eventLocation = {lat: lt, lng: ln };
-	var map = new google.maps.Map(document.getElementById("map-canvas"), mapOptions);
-	var marker = new google.maps.Marker({
-		draggable: true,
-		position: eventLocation,
-		map: map,
+		var eventLocation = {lat: lt, lng: ln };
+		var map = new google.maps.Map(document.getElementById("map-canvas"), mapOptions);
+		var marker = new google.maps.Marker({
+			draggable: false,
+			position: eventLocation,
+			map: map,
+		});
 	});
-});
-
 </script>
 @stop

@@ -54,6 +54,11 @@ class User extends Model implements AuthenticatableContract,
      */
     protected $hidden = ['password', 'remember_token'];
 
+    public static function hasProfileImage($fileToUpload)
+    {
+        return is_uploaded_file($_FILES[$fileToUpload]['tmp_name']);
+    }
+
     public static function saveUploadImage($fileToUpload)
     {
         $tempFile = $_FILES[$fileToUpload]['tmp_name'];
