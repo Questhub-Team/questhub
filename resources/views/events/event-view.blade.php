@@ -50,7 +50,7 @@ $(document).ready(function initMap() {
 
 	};
 
-	var eventLocation = {lat: parseFloat(lt), lng: parseFloat(ln) };
+	var eventLocation = {lat: lt, lng: ln };
 	var map = new google.maps.Map(document.getElementById("map-canvas"), mapOptions);
 	var marker = new google.maps.Marker({
 		draggable: true,
