@@ -97,8 +97,8 @@ class EventsController extends Controller
     }
     public function showOne($id)
     {
-        $event = Events::findOrFail($id);
-        $data = compact('event');
+        $oneEvent = Events::findOrFail($id);
+        $data = compact('oneEvent');
         return view('events.event-view')->with($data);
     }
     /**
