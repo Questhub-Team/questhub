@@ -1,9 +1,11 @@
 #login-modal {
 	margin-bottom: 20px;
 }
+
 .btn {
 	margin: 5px;
 }
+
 #edit-profile-form {
 	margin-bottom: 20px;
 }
@@ -24,12 +26,15 @@
 	padding-top: 10px;
 	padding-bottom: 5px;
 }
+
 .events-container {
 	left: 13%;
 }
+
 .remove {
 	color: red;
 }
+
 #logo {
 	display: block;
 }
@@ -44,11 +49,13 @@ body {
 	padding-left: 20px;
 	padding-right: 20px;
 }
+
 .bar {
 	width: 100%;
 	height: 1px;
 	background-color: black;
 }
+
 .navbar,
 .navbar-default,
 .navbar-collapse,
@@ -56,6 +63,7 @@ body {
 .navbar-form  {
 	border-color: #f8f8f8;
 }
+
 #register {
 	position: relative;
 	margin: auto;
@@ -63,10 +71,12 @@ body {
 	height: 50px;
 	width: 300px;
 }
+
 .register-btn {
 	position: relative;
 	top: 100%;
 }
+
 .register-text {
 	font-size: 20px;
 }
@@ -89,13 +99,16 @@ body {
 .btn span.glyphicon-ok {               
     opacity: 0;             
 }
+
 .btn.active span.glyphicon-ok {             
     opacity: 1;             
 }
+
 .interest-buttons {
 	display: inline;
     padding: 2px;
 }
+
 .glyphicon-ok {
     color: red;
 }
@@ -130,4 +143,12 @@ p.large {
 
 .close {
 	font-size: 2.25em;
+}
+
+#map-canvas {
+	width: 400px;
+	height: 400px;
+	position: relative;
+	border: solid 1px darkgrey;
+	margin-top: 20px;
 }
