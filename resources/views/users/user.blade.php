@@ -24,7 +24,6 @@
 						<button type="button" class="close" data-dismiss="modal">&times;</button>
 						<h2 id="edit-h2">Edit Profile for {{ $user->name }}</h2>
 					</div>
-
 					<form method="POST" action="{{ action('UsersController@update') }}" id="edit-profile-form">
 						<input type="hidden" name="_method" value="PUT">
 						{{ csrf_field() }}
