@@ -179,8 +179,6 @@
 			<h3><a href="{{ action('EventsController@showOne', $userEvent->id) }}" target="_BLANK">
 				Name: {{ $userEvent->name }}</a></h4>
 
-				<p>Location: {{ (isset($userEvent->location)) ? $userEvent->location : '' }}</p>
-
 				<p>{{ (isset($userEvent->description)) ? strip_tags($userEvent->description) : '' }}</p>
 			<form method="POST" action="{{ action('EventsController@destroy', $userEvent->id) }}">
 				<input type="hidden" name="_method" value="DELETE">
